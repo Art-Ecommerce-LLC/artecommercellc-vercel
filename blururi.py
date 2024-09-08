@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # Set the path to the image in your public folder
     # Make sure the path is correct relative to the script’s location
     public_folder = "./public"
-    image_filename = "artistlogo.webp"  # Replace with your image file name
+    image_filename = "headshot.webp"  # Replace with your image file name
     image_path = os.path.join(public_folder, image_filename)
 
     # Check if the file exists
