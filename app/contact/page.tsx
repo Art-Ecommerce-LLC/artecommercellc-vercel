@@ -5,8 +5,8 @@ import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export default function Contact() {
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
-      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-8xl p-8 md:p-16">
+    <div className="w-full h-full pt-6 flex items-center justify-center">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-8xl pt-0 pl-8 pr-8 pb-8 md:p-16">
         
         {/* Text Section */}
         <motion.div
