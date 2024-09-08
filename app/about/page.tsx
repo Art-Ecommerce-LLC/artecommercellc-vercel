@@ -35,7 +35,7 @@ export default function About() {
         >
           <div className="w-full max-w-sm lg:max-w-md text-center lg:text-left">
             <Image
-              src="/headshot.png"
+              src="/headshot.webp"
               alt="CEO headshot"
               className="rounded-[100px_20px_50px_20px] lg:rounded-[150px_20px_100px_20px] shadow-lg"
               priority={true}
