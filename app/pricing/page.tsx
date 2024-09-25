@@ -19,10 +19,10 @@ export default function Pricing() {
           <CurrencyDollarIcon className="w-10 h-10 text-gray-800 ml-2" /> {/* Using the Heroicons CurrencyDollarIcon */}
         </h2>
         <p className="text-lg md:text-xl xl:text-2xl text-gray-600">
-          Our pricing is based on the complexity of the project, specific
-          requirements of our clients, and the duration of labor. We offer
+          The pricing is based on the complexity of the project, specific
+          requirements of our clients, and the duration of labor. I offer
           competitive rates and flexible payment options to accommodate various
-          budgets. For a detailed quote, please contact us directly.
+          budgets. For a detailed quote, please contact me directly.
         </p>
       </motion.div>
 
@@ -40,9 +40,7 @@ export default function Pricing() {
           <div className="text-4xl font-bold text-gray-800 mt-4">$500+</div>
           <ul className="mt-6 space-y-4 text-gray-600 text-left">
             <li>Up to 5 pages</li>
-            <li>Basic design</li>
             <li>Responsive layout</li>
-            <li>Email support</li>
           </ul>
         </div>
 
@@ -55,7 +53,6 @@ export default function Pricing() {
             <li>Up to 10 pages</li>
             <li>Custom design</li>
             <li>Responsive layout</li>
-            <li>Priority support</li>
           </ul>
         </div>
 
@@ -68,7 +65,6 @@ export default function Pricing() {
             <li>Unlimited pages</li>
             <li>Advanced design</li>
             <li>Custom integrations</li>
-            <li>24/7 support</li>
           </ul>
         </div>
       </motion.div>

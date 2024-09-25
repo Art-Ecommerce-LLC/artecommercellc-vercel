@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-800 py-6">
+        <footer className="bg-gray-800 py-6 mt-3">
             <div className="container mx-auto text-center">
                 <nav className="mb-4">
                     {/* Modify flex-direction for 420px */}

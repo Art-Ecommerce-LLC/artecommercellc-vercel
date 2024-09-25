@@ -19,7 +19,7 @@ export default function Contact() {
             Contact Us
           </h2>
           <p className="text-lg md:text-xl xl:text-2xl text-gray-600">
-            If you have any questions or would like to reach out to us, please use the following contact information.
+            If you have any questions or would like to reach out to me, please use the following contact information.
           </p>
         </motion.div>
 

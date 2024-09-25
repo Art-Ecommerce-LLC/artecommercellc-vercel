@@ -19,10 +19,10 @@ export default function About() {
             About Me
           </h2>
           <p className="text-lg md:text-xl xl:text-2xl text-gray-600">
-            Art Ecommerce offers comprehensive end-to-end order fulfillment services, alongside building custom websites that empower artists to sell their work effortlessly.
+            I provide comprehensive, end-to-end order fulfillment services, along with building custom websites that help businesses grow and scale effectively.
           </p>
           <p className="text-lg md:text-xl xl:text-2xl text-gray-600">
-            Our team delivers practical solutions that align with our clients&#39; visions, whether it&#39;s new web applications or enhancing existing sites with advanced functionalities.
+          I am dedicated to delivering practical and innovative solutions that align with your vision, whether it&#39;s creating new web applications or enhancing existing websites with advanced functionality.
           </p>
         </motion.div>
 
