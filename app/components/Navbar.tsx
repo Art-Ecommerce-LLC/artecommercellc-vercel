@@ -1,17 +1,24 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const Navbar: React.FC = () => {
+export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    
+    // Use useEffect to manipulate DOM elements like document.body
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
 
-    // lock the scroll when the mobile menu is open
-    if (isMobileMenuOpen) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
+        // Clean up to reset the overflow when the component is unmounted
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isMobileMenuOpen]);
 
     return (
         <nav className="flex items-center justify-between bg-white p-4 shadow relative z-20">
@@ -125,5 +132,3 @@ const Navbar: React.FC = () => {
         </nav>
     );
 };
-
-export default Navbar;
