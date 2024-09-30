@@ -14,23 +14,23 @@ const Footer: React.FC = () => {
                             </Link>
                         </li>
                         <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
+                        {/* <li className="flex items-center">
                             <Link href="/about" className="text-gray-300 hover:text-white transition duration-300">
                                 About
                             </Link>
-                        </li>
-                        <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
+                        </li> */}
+                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
                         <li className="flex items-center">
                             <Link href="/contact" className="text-gray-300 hover:text-white transition duration-300">
                                 Contact
                             </Link>
                         </li>
-                        <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
+                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
+                        {/* <li className="flex items-center">
                             <Link href="/community" className="text-gray-300 hover:text-white transition duration-300">
                                 Community
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
                         <li className="flex items-center">
                             <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">

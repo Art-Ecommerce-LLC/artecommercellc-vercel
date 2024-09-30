@@ -85,14 +85,14 @@ export default function Home() {
           >
             <div className="w-full max-w-sm lg:max-w-md">
               <Image
-                src={`/serohero.jpg`}
+                src={`/seogear.png`}
                 alt="Artist Logo"
-                className="rounded-[100px_20px_50px_20px] shadow-lg object-cover"
+                className="object-cover"
                 priority={true}
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1aWe88+R2iDsMuCAWMbd0DDp6Zq7Hf6oIkCabLIm0bXMy5YetPv0Ua9YRhR5cqSmRccOcDqO9bCqFUKoAAGAB2rZu2r1M1rof/9k="
                 placeholder="blur"
-                height={1200}
-                width={900}
+                height={500}
+                width={500}
                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -112,11 +112,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 text-center mb-3">About Me</h2>
-            <p className="text-lg text-gray-700 text-left">
-              Hi, I'm Ben, a passionate web developer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I’ve worked closely with clients to create tailored solutions that meet their business needs. My approach combines creativity and technical expertise to drive meaningful outcomes.
+            <p className="text-lg text-gray-700 text-left mb-4">
+              Hi, I'm Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I’ve worked closely with clients to create tailored solutions that meet their business needs.
             </p>
             <p className="text-lg text-gray-700 text-left">
-              Whether it’s building a custom website or automating key business processes, I’m dedicated to ensuring my clients’ success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
+              I’m dedicated to ensuring my clients’ success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
             </p>
           </motion.div>
 
@@ -128,7 +128,7 @@ export default function Home() {
             animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-3" >Tools I Use</h3>
+            <h3 className="text-3xl font-bold text-gray-900 text-center mb-3" >Technologies</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-4">
               <div className="flex flex-col items-center">
                 <FaPython className="text-4xl text-gray-700" />
@@ -139,7 +139,7 @@ export default function Home() {
                 <p className="text-gray-600 mt-2">Next.js</p>
               </div>
               <div className="flex flex-col items-center">
-                <FaStripe className="text-4xl text-gray-700" />
+                <FaStripe className="text-7xl text-gray-700" />
               </div>
               <div className="flex flex-col items-center">
                 <SiTypescript className="text-4xl text-gray-700" />
@@ -167,7 +167,6 @@ export default function Home() {
         transition={{ duration: 1 }}
       >
         <div className="max-w-7xl mx-auto space-y-12">
-          <h2 className="text-4xl font-bold text-gray-900 text-center">Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               className="flex flex-col items-start text-left"

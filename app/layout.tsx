@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="bg-white">
-      <body className={`${inter.className} flex flex-col min-h-screen bg-white`}>
+      <body className={`${inter.className} flex flex-col bg-white`}>
         <nav>
           <Navbar />
         </nav>
-        <main className="flex-grow flex items-center justify-center bg-white">
+        <main className="bg-white">
           {children}
         </main>
         <footer className="bg-white">

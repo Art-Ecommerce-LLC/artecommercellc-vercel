@@ -5,7 +5,7 @@ import { CurrencyDollarIcon } from "@heroicons/react/24/solid"; // Importing Hea
 
 export default function Pricing() {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-start pt-8 lg:pt-16 px-8 md:px-16">
+    <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-start mt-8">
       
       {/* Text Section */}
       <motion.div

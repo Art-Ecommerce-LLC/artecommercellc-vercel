@@ -43,24 +43,24 @@ export default function Navbar() {
                 >
                     Home
                 </a>
-                <a
+                {/* <a
                     href="/about"
                     className="text-gray-800 hover:bg-[var(--nav-bg-color)] hover:text-[var(--hover-text-color)] transition-colors duration-300 ease-in-out px-4 py-2 rounded-md"
                 >
                     About
-                </a>
+                </a> */}
                 <a
                     href="/contact"
                     className="text-gray-800 hover:bg-[var(--nav-bg-color)] hover:text-[var(--hover-text-color)] transition-colors duration-300 ease-in-out px-4 py-2 rounded-md"
                 >
                     Contact
                 </a>
-                <a
+                {/* <a
                     href="/community"
                     className="text-gray-800 hover:bg-[var(--nav-bg-color)] hover:text-[var(--hover-text-color)] transition-colors duration-300 ease-in-out px-4 py-2 rounded-md"
                 >
                     Community
-                </a>
+                </a> */}
                 <a
                     href="/pricing"
                     className="text-gray-800 hover:bg-[var(--nav-bg-color)] hover:text-[var(--hover-text-color)] transition-colors duration-300 ease-in-out px-4 py-2 rounded-md"
@@ -103,24 +103,24 @@ export default function Navbar() {
                     >
                         Home
                     </a>
-                    <a
+                    {/* <a
                         href="/about"
                         className="w-full text-center text-[var(--navbar-text-color)] text-xl py-4 border-b border-black last:border-none hover:bg-[var(--navbar-hover-background-color)] hover:text-white transition-colors duration-300 ease-in-out"
                     >
                         About
-                    </a>
+                    </a> */}
                     <a
                         href="/contact"
                         className="w-full text-center text-[var(--navbar-text-color)] text-xl py-4 border-b border-black last:border-none hover:bg-[var(--navbar-hover-background-color)] hover:text-white transition-colors duration-300 ease-in-out"
                     >
                         Contact
                     </a>
-                    <a
+                    {/* <a
                         href="/community"
                         className="w-full text-center text-[var(--navbar-text-color)] text-xl py-4 border-b border-black last:border-none hover:bg-[var(--navbar-hover-background-color)] hover:text-white transition-colors duration-300 ease-in-out"
                     >
                         Community
-                    </a>
+                    </a> */}
                     <a
                         href="/pricing"
                         className="w-full text-center text-[var(--navbar-text-color)] text-xl py-4 hover:bg-[var(--navbar-hover-background-color)] hover:text-white transition-colors duration-300 ease-in-out"
