@@ -23,7 +23,7 @@ export default function About() {
             I provide comprehensive, end-to-end order fulfillment services, along with building custom websites that help businesses grow and scale effectively.
           </p>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed">
-            I am dedicated to delivering practical and innovative solutions that align with your vision, whether it's creating new web applications or enhancing existing websites with advanced functionality.
+            I am dedicated to delivering practical and innovative solutions that align with your vision, whether it&apos;s creating new web applications or enhancing existing websites with advanced functionality.
           </p>
         </motion.div>
 

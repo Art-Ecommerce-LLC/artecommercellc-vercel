@@ -113,10 +113,10 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold text-gray-900 text-center mb-3">About Me</h2>
             <p className="text-lg text-gray-700 text-left mb-4">
-              Hi, I'm Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I’ve worked closely with clients to create tailored solutions that meet their business needs.
+              Hi, I&apos;m Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I&apos;ve worked closely with clients to create tailored solutions that meet their business needs.
             </p>
             <p className="text-lg text-gray-700 text-left">
-              I’m dedicated to ensuring my clients’ success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
+              I&apos;m dedicated to ensuring my clients&apos; success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
             </p>
           </motion.div>
 
