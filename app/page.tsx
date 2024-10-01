@@ -4,26 +4,24 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { Button } from "@headlessui/react";
-import {
-  BoltIcon,
-  ArrowTrendingUpIcon,
-  ScaleIcon,
-  CodeBracketIcon
-} from "@heroicons/react/24/solid"; // Icons for Hero and Services sections
-
-import { FaStripe, FaReact, FaPython } from "react-icons/fa";
-import { SiNextdotjs, SiPostgresql, SiTypescript } from "react-icons/si";
+import { BoltIcon, ArrowTrendingUpIcon, ScaleIcon, CodeBracketIcon } from "@heroicons/react/24/solid";
+import { FaLinkedin, FaTwitter, FaInstagram, FaGithub, FaFacebook, FaYoutube,
+  FaPython, FaReact, FaStripe } from "react-icons/fa";
+import { SiNextdotjs, SiTypescript, SiPostgresql } from "react-icons/si";
+import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export default function Home() {
   // Refs to track sections
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
+  const contactRef = useRef(null);
 
   // Use inView hook to trigger animations on scroll
   const isHeroInView = useInView(heroRef, { once: true });
   const isAboutInView = useInView(aboutRef, { once: true });
   const isServicesInView = useInView(servicesRef, { once: true });
+  const isContactInView = useInView(contactRef, { once: true });
 
   return (
     <div className="w-full bg-gray-50">
@@ -36,6 +34,7 @@ export default function Home() {
         animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
         transition={{ duration: 1 }}
       >
+        {/* Hero Section Content */}
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl p-8 md:p-16 space-y-8 lg:space-y-0 lg:space-x-12">
           {/* Text Section */}
           <motion.div
@@ -86,11 +85,10 @@ export default function Home() {
             <div className="w-full max-w-sm lg:max-w-md">
               <Image
                 src={`/seogear.png`}
-                alt="Artist Logo"
+                alt="SEO Gear"
                 className="object-cover"
                 priority={true}
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1aWe88+R2iDsMuCAWMbd0DDp6Zq7Hf6oIkCabLIm0bXMy5YetPv0Ua9YRhR5cqSmRccOcDqO9bCqFUKoAAGAB2rZu2r1M1rof/9k="
-                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,..."
                 height={500}
                 width={500}
                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -100,8 +98,9 @@ export default function Home() {
         </div>
       </motion.div>
 
-      {/* About Me & Tools Section (Side by Side) */}
-      <div className="w-full bg-white py-16 px-8">
+      {/* About and Tools Section */}
+      <div className="w-full bg-white pb-16 px-8">
+        {/* About and Tools Section Content */}
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
           {/* About Me Section */}
           <motion.div
@@ -213,6 +212,80 @@ export default function Home() {
           </div>
         </div>
       </motion.div>
+{/* Contact Section */}
+<motion.div
+  ref={contactRef}
+  className="w-full bg-gray-100 py-16 px-8"
+  initial={{ opacity: 0 }}
+  animate={isContactInView ? { opacity: 1 } : { opacity: 0 }}
+  transition={{ duration: 1 }}
+>
+  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between space-y-8 lg:space-y-0">
+    
+    {/* Contact Info Section */}
+    <motion.div
+      className="w-full lg:w-1/2 space-y-6"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {/* Align heading and icon on the same row */}
+      <div className="flex items-center space-x-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Contact Me</h2>
+      </div>
+      <p className="text-lg md:text-xl text-gray-600">
+        Feel free to reach out via phone or email. I’m always open to discussing new projects or collaboration opportunities.
+      </p>
+      <div className="border-gray-300 pt-4">
+        <div className="flex items-center space-x-4">
+          <PhoneIcon className="h-8 w-8 text-gray-500" />
+          <p className="text-xl text-gray-800">(858) 519-2727</p>
+        </div>
+        <div className="flex items-center space-x-4 mt-4">
+          <EnvelopeIcon className="h-8 w-8 text-gray-500" />
+          <p className="text-xl text-gray-800">ben@artecommercellc.com</p>
+        </div>
+      </div>
+    </motion.div>
+{/* Social Media Section */}
+<motion.div
+  className="w-full lg:w-1/2 flex flex-col items-center space-y-6" // Updated 'items-center' to center content
+  initial={{ opacity: 0, y: 50 }}
+  animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <div className="flex items-center space-x-4">
+    <h3 className="text-3xl md:text-5xl font-bold text-gray-900">Connect with Me</h3>
+  </div>
+  <p className="text-lg md:text-xl text-gray-600 pb-6">Follow me on social media to stay updated with my work.</p>
+
+  {/* Centered social icons */}
+  <div className="flex justify-center space-x-6 mt-4"> {/* Added justify-center to center icons */}
+    <a href="https://www.linkedin.com/company/art-ecommerce-llc/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaLinkedin className="h-8 w-8" />
+    </a>
+    {/* <a href="https://twitter.com/benmyers" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaTwitter className="h-8 w-8" />
+    </a> */}
+    {/* <a href="https://www.instagram.com/benmyers" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaInstagram className="h-8 w-8" />
+    </a> */}
+    <a href="https://github.com/art-ecommerce-llc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaGithub className="h-8 w-8" />
+    </a>
+    {/* <a href="https://facebook.com/benmyers" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaFacebook className="h-8 w-8" />
+    </a> */}
+    {/* <a href="https://youtube.com/benmyers" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
+      <FaYoutube className="h-8 w-8" />
+    </a> */}
+  </div>
+</motion.div>
+
+  </div>
+</motion.div>
+
+
     </div>
   );
 }

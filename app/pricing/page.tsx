@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
+import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon } from "@heroicons/react/24/solid"; // Importing necessary icons
+
 
 export default function Pricing() {
   return (
@@ -33,39 +34,81 @@ export default function Pricing() {
       >
         {/* Basic Plan */}
         <div className="flex flex-col items-start bg-white p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Basic Plan</h3>
-          <p className="text-gray-600 mt-4">Ideal for small projects and startups.</p>
+          <div className="flex items-center space-x-2 mb-4">
+            <DevicePhoneMobileIcon className="h-6 w-6 text-blue-500" />
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Basic Plan</h3>
+          </div>
+          <p className="text-gray-600">Ideal for small projects and startups.</p>
           <div className="text-3xl sm:text-4xl font-bold text-gray-800 mt-4">$500+</div>
           <ul className="mt-6 space-y-2 text-gray-600 w-full flex-grow">
-            <li>Up to 5 pages</li>
-            <li>Responsive layout</li>
-            <li>Email support</li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Up to 5 pages</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Responsive layout</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+              <span>Email support</span>
+            </li>
           </ul>
         </div>
 
         {/* Standard Plan */}
         <div className="flex flex-col items-start bg-white p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Standard Plan</h3>
-          <p className="text-gray-600 mt-4">Perfect for medium-sized projects.</p>
+          <div className="flex items-center space-x-2 mb-4">
+            <ComputerDesktopIcon className="h-6 w-6 text-yellow-500" />
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Standard Plan</h3>
+          </div>
+          <p className="text-gray-600">Perfect for medium-sized projects.</p>
           <div className="text-3xl sm:text-4xl font-bold text-gray-800 mt-4">$1000+</div>
           <ul className="mt-6 space-y-2 text-gray-600 w-full flex-grow">
-            <li>Up to 10 pages</li>
-            <li>Custom design</li>
-            <li>Responsive layout</li>
-            <li>Priority email support</li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Up to 10 pages</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <CogIcon className="h-5 w-5 text-gray-500" />
+              <span>Custom design</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Responsive layout</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+              <span>Priority email support</span>
+            </li>
           </ul>
         </div>
 
         {/* Premium Plan */}
         <div className="flex flex-col items-start bg-white p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Premium Plan</h3>
-          <p className="text-gray-600 mt-4">For complex, large-scale projects.</p>
+          <div className="flex items-center space-x-2 mb-4">
+            <CurrencyDollarIcon className="h-6 w-6 text-green-500" />
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Premium Plan</h3>
+          </div>
+          <p className="text-gray-600">For complex, large-scale projects.</p>
           <div className="text-3xl sm:text-4xl font-bold text-gray-800 mt-4">$2000+</div>
           <ul className="mt-6 space-y-2 text-gray-600 w-full flex-grow">
-            <li>Unlimited pages</li>
-            <li>Advanced design</li>
-            <li>Custom integrations</li>
-            <li>24/7 priority support</li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Unlimited pages</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <CogIcon className="h-5 w-5 text-gray-500" />
+              <span>Advanced design</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Custom integrations</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+              <span>24/7 priority support</span>
+            </li>
           </ul>
         </div>
       </motion.div>
@@ -79,9 +122,10 @@ export default function Pricing() {
       >
         <a
           href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20a%20Plan"
-          className="py-3 px-6 text-white rounded-lgransition-colors Button"
+          className="py-3 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
         >
-          Email Me to Get Started
+          <EnvelopeIcon className="h-5 w-5" />
+          <span>Email Me to Get Started</span>
         </a>
       </motion.div>
     </div>
