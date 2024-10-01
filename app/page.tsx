@@ -5,8 +5,10 @@ import Image from "next/image";
 import { useRef } from "react";
 import { Button } from "@headlessui/react";
 import { BoltIcon, ArrowTrendingUpIcon, ScaleIcon, CodeBracketIcon } from "@heroicons/react/24/solid";
-import { FaLinkedin, FaTwitter, FaInstagram, FaGithub, FaFacebook, FaYoutube,
+import { FaLinkedin,FaGithub,
   FaPython, FaReact, FaStripe } from "react-icons/fa";
+  // import { FaLinkedin, FaTwitter, FaInstagram, FaGithub, FaFacebook, FaYoutube,
+  //   FaPython, FaReact, FaStripe } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql } from "react-icons/si";
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
