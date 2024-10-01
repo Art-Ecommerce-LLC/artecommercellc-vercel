@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="bg-white">
-      <body className={`${inter.className} flex flex-col bg-white`}>
+      <body className={`${inter.className}bg-white`}>
         <nav>
           <Navbar />
         </nav>

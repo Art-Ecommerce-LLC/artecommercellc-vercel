@@ -6,8 +6,8 @@ import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIco
 
 export default function Pricing() {
   return (
-    <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-start mt-8 px-4 sm:px-8 md:px-12 lg:px-16">
-      
+    <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center mt-8 px-4 sm:px-8 md:px-12 lg:px-16">
+
       {/* Text Section */}
       <motion.div
         className="flex flex-col justify-start w-full max-w-4xl space-y-6 text-left"
