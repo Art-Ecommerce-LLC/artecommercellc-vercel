@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
                                 Community
                             </Link>
                         </li> */}
-                        <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
+                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
                         <li className="flex items-center">
                             <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
                                 Pricing
