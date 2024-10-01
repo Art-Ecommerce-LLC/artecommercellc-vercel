@@ -128,7 +128,7 @@ export default function Home() {
             animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-3" >Technologies</h3>
+            <h3 className="text-4xl font-bold text-gray-900 text-center mb-3" >Technologies</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-4">
               <div className="flex flex-col items-center">
                 <FaPython className="text-4xl text-gray-700" />
