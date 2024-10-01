@@ -28,31 +28,31 @@ export default function Home() {
      {/* Hero Section */}
 <motion.div
   ref={heroRef}
-  className="hero w-full flex items-center justify-center bg-white min-h-[90vh] pb-12 lg:pb-16"
+  className="hero w-full flex items-center justify-center bg-white min-h-[90vh] lg:pb-16 "
   initial={{ opacity: 0 }}
   animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
   transition={{ duration: 1 }}
 >
   {/* Hero Section Content */}
-  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
+  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8 sm:mt-5">
     {/* Hero Section */}
 <motion.div
   ref={heroRef}
-  className="relative hero w-full flex flex-col items-center justify-center bg-white min-h-[90vh] pb-12 lg:pb-16"
+  className="relative hero w-full flex flex-col items-center justify-center bg-white min-h-[90vh] pb-12 lg:pb-16 sm:mt-5"
   initial={{ opacity: 0 }}
   animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
   transition={{ duration: 1 }}
 >
   {/* Hero Section Content */}
-  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
+  <div className="flex flex-col sm:mt-5 lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
     {/* Text Section */}
     <motion.div
-      className="flex flex-col justify-center w-full lg:w-1/2 space-y-6 text-left text-black"
+      className="flex flex-col justify-center w-full lg:w-1/2 space-y-6 text-left text-black sm:space-y-5"
       initial={{ opacity: 0, x: -100 }}
       animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-black">
+      <h1 className="text-3xl sm:text-5xl sm:pt-0 lg:text-6xl font-extrabold leading-tight text-black">
         <span className="text-black">Empower Your Business</span> with Custom SEO Websites
       </h1>
       <p className="text-lg md:text-xl text-black">
@@ -107,20 +107,19 @@ export default function Home() {
   </div>
 
   <motion.div
-  className="absolute bottom-8 flex justify-center w-full space-x-6 px-6" // space-x-6 adds space between the arrows
-  initial={{ y: 0 }} // Remove opacity animation for no fading
-  animate={{ y: [0, -10, 0] }} // Only animate the y-axis for the bounce effect
+  className="hidden sm:flex justify-center w-full space-x-6 px-6 sm:pt-24"
+  initial={{ y: 0 }}
+  animate={{ y: [0, -10, 0] }}
   transition={{
-    duration: 1.5,  // Control the speed of the bounce
-    repeat: Infinity,  // Infinite repeat
-    ease: "easeInOut",  // Smooth easing for smooth bounce
+    duration: 1.5,
+    repeat: Infinity,
+    ease: "easeInOut",
   }}
 >
   <ArrowDownIcon className="h-10 w-10 text-gray-500" />
   <ArrowDownIcon className="h-10 w-10 text-gray-500" />
   <ArrowDownIcon className="h-10 w-10 text-gray-500" />
 </motion.div>
-
   
 </motion.div>
   </div>

@@ -12,6 +12,13 @@ const config: Config = {
         'custom-md': '829px', // Custom Breakpoint Header
         'custom-520': '520px', // Custom Breakpoint Footer
       },
+      
+    },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
   },
   plugins: [],
