@@ -5,9 +5,8 @@ import Image from "next/image";
 import { useRef } from "react";
 import { Button } from "@headlessui/react";
 import { BoltIcon, ArrowTrendingUpIcon, ScaleIcon, CodeBracketIcon, ArrowDownIcon } from "@heroicons/react/24/solid";
-import { FaLinkedin, FaGithub, FaPython, FaReact, FaStripe } from "react-icons/fa";
+import { FaPython, FaReact, FaStripe } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql } from "react-icons/si";
-import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export default function Home() {
   // Refs to track sections
@@ -34,17 +33,17 @@ export default function Home() {
   transition={{ duration: 1 }}
 >
   {/* Hero Section Content */}
-  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8 sm:mt-5">
+  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
     {/* Hero Section */}
 <motion.div
   ref={heroRef}
-  className="relative hero w-full flex flex-col items-center justify-center bg-white min-h-[90vh] pb-12 lg:pb-16 sm:mt-5"
+  className="relative hero w-full flex flex-col items-center justify-center bg-white min-h-[90vh] pb-12 lg:pb-16"
   initial={{ opacity: 0 }}
   animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
   transition={{ duration: 1 }}
 >
   {/* Hero Section Content */}
-  <div className="flex flex-col sm:mt-5 lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
+  <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-8xl px-6 lg:px-16 space-y-8 lg:space-y-0 lg:space-x-8">
     {/* Text Section */}
     <motion.div
       className="flex flex-col justify-center w-full lg:w-1/2 space-y-6 text-left text-black sm:space-y-5"
@@ -84,43 +83,54 @@ export default function Home() {
       </div>
     </motion.div>
 
-    {/* Image Section */}
-    <motion.div
-      className="w-full lg:w-1/2 flex flex-col items-center justify-center space-y-8"
-      initial={{ opacity: 0, x: 100 }}
-      animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="w-full max-w-sm lg:max-w-md">
-        <Image
-          src={`/seogear.png`}
-          alt="SEO Gear"
-          className="object-cover"
-          priority={true}
-          blurDataURL="data:image/jpeg;base64,..."
-          height={500}
-          width={500}
-          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-    </motion.div>
-  </div>
-
-  <motion.div
-  className="hidden sm:flex justify-center w-full space-x-6 px-6 sm:pt-24"
-  initial={{ y: 0 }}
-  animate={{ y: [0, -10, 0] }}
-  transition={{
-    duration: 1.5,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
+    {/* Image Section with Rotating Outer Image */}
+<motion.div
+  className="w-full lg:w-1/2 flex flex-col items-center justify-center space-y-8 relative"
+  initial={{ opacity: 0, x: 100 }}
+  animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
 >
-  <ArrowDownIcon className="h-10 w-10 text-gray-500" />
-  <ArrowDownIcon className="h-10 w-10 text-gray-500" />
-  <ArrowDownIcon className="h-10 w-10 text-gray-500" />
+  {/* Outer Image Rotating */}
+  <motion.div
+    className="absolute inset-0 flex items-center justify-center z-0"
+    animate={{ rotate: 360 }}
+    transition={{
+      repeat: Infinity,
+      duration: 10, // Adjust the duration of one full rotation
+      ease: "linear",
+    }}
+  >
+    <Image
+      src={`/seoouter.webp`}
+      alt="SEO Outer Gear"
+      className="object-cover"
+      height={500}
+      width={500}
+    />
+  </motion.div>
+
+  {/* Inner Image */}
+  <div 
+    className="absolute z-10"
+    style={{ 
+      top: '50%', 
+      left: '50%', 
+      transform: 'translate(-50.7%, -55.7%)', 
+      width: '450px', /* Set a fixed width */
+      height: '450px', /* Set a fixed height */
+    }}
+  >
+    <Image
+      src={`/seoinner.webp`}
+      alt="SEO Inner Gear"
+      layout="fixed"  /* Use fixed layout to enforce size */
+      width={500}     /* Fixed width */
+      height={500}    /* Fixed height */
+    />
+  </div>
 </motion.div>
-  
+
+  </div>  
 </motion.div>
   </div>
 </motion.div>
@@ -132,21 +142,6 @@ export default function Home() {
         {/* About and Tools Section Content */}
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
           {/* About Me Section */}
-          <motion.div
-            ref={aboutRef}
-            className="md:w-1/2"
-            initial={{ opacity: 0, x: -100 }}
-            animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-3">About Me</h2>
-            <p className="text-lg text-gray-700 text-left mb-4">
-              Hi, I&apos;m Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I&apos;ve worked closely with clients to create tailored solutions that meet their business needs.
-            </p>
-            <p className="text-lg text-gray-700 text-left">
-              I&apos;m dedicated to ensuring my clients&apos; success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
-            </p>
-          </motion.div>
 
           {/* Tools I Use Section */}
           <motion.div
@@ -182,6 +177,21 @@ export default function Home() {
                 <p className="text-gray-600 mt-2">PostgreSQL</p>
               </div>
             </div>
+          </motion.div>
+          <motion.div
+            ref={aboutRef}
+            className="md:w-1/2"
+            initial={{ opacity: 0, x: -100 }}
+            animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-3">About Me</h2>
+            <p className="text-lg text-gray-700 text-left mb-4">
+              Hi, I&apos;m Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I&apos;ve worked closely with clients to create tailored solutions that meet their business needs.
+            </p>
+            <p className="text-lg text-gray-700 text-left">
+              I&apos;m dedicated to ensuring my clients&apos; success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
+            </p>
           </motion.div>
         </div>
       </div>
@@ -239,66 +249,6 @@ export default function Home() {
               </p>
             </motion.div>
           </div>
-        </div>
-      </motion.div>
-
-      {/* Contact Section */}
-      <motion.div
-        ref={contactRef}
-        className="w-full bg-gray-100 py-16 px-6 lg:px-16"
-        initial={{ opacity: 0 }}
-        animate={isContactInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between space-y-8 lg:space-y-0">
-          {/* Contact Info Section */}
-          <motion.div
-            className="w-full lg:w-1/2 space-y-6"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Align heading and icon on the same row */}
-            <div className="flex items-center space-x-4">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Contact Me</h2>
-            </div>
-            <p className="text-lg md:text-xl text-gray-600">
-              Feel free to reach out via phone or email. I’m always open to discussing new projects or collaboration opportunities.
-            </p>
-            <div className="border-gray-300 pt-4">
-              <div className="flex items-center space-x-4">
-                <PhoneIcon className="h-8 w-8 text-gray-500" />
-                <p className="text-xl text-gray-800">(858) 519-2727</p>
-              </div>
-              <div className="flex items-center space-x-4 mt-4">
-                <EnvelopeIcon className="h-8 w-8 text-gray-500" />
-                <p className="text-xl text-gray-800">ben@artecommercellc.com</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Social Media Section */}
-          <motion.div
-            className="w-full lg:w-1/2 flex flex-col space-y-6"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="flex space-x-4">
-              <h3 className="text-3xl md:text-5xl font-bold text-gray-900">Connect with Me</h3>
-            </div>
-            <p className="text-lg md:text-xl text-gray-600 pb-6">Follow me on social media to stay updated with my work.</p>
-
-            {/* Centered social icons */}
-            <div className="flex justify-center space-x-6 mt-4">
-              <a href="https://www.linkedin.com/company/art-ecommerce-llc/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
-                <FaLinkedin className="h-8 w-8" />
-              </a>
-              <a href="https://github.com/art-ecommerce-llc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition-colors">
-                <FaGithub className="h-8 w-8" />
-              </a>
-            </div>
-          </motion.div>
         </div>
       </motion.div>
     </div>
