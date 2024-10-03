@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                                 Home
                             </Link>
                         </li>
-                        <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
+                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
                         <li className="flex items-center">
                             <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
                                 Pricing
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
                         </li>
                     </ul>
                 </nav>
-                <p className="text-gray-500">&copy; 2024 Art Ecommerce, LLC.</p>
+                <p className="text-white">&copy; 2024 Art Ecommerce, LLC.</p>
             </div>
         </footer>
     );

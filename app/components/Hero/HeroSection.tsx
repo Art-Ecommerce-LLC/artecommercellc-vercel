@@ -53,7 +53,7 @@ export default function HeroSection() {
                         <Button
                         as="a"
                         href="mailto:ben@artecommercellc.com?subject=Get%20a%20Free%20Consultation"
-                        className="px-6 py-3 bg-[var(--button-bg-color)] text-[var(--hover-text-color)] font-semibold rounded-lg shadow-lg hover:bg-[var(--hover-bg-color)]"
+                        className="px-6 py-3 bg-[var(--button-bg-color)] text-white font-semibold rounded-lg shadow-lg hover:bg-[var(--hover-bg-color)]"
                         >
                         Get Your Free SEO Audit Today!
                         </Button>

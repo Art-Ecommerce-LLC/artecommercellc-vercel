@@ -24,6 +24,7 @@ export default function IntegrationsSection() {
                         {/* Python Integration */}
                         <motion.a
                             href="https://www.python.org/doc/"
+                            aria-label="Python Documentation"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center p-6 bg-[var(--dark-grey)] card"
@@ -37,6 +38,7 @@ export default function IntegrationsSection() {
                         <motion.a
                             href="https://nextjs.org/docs"
                             target="_blank"
+                            aria-label="Next.js Documentation"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center rounded-lg p-6 "
                             whileHover={{ scale: 1.05 }}
@@ -48,6 +50,7 @@ export default function IntegrationsSection() {
                         {/* Stripe Integration */}
                         <motion.a
                             href="https://stripe.com/docs"
+                            aria-label="Stripe Documentation"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center rounded-lg p-6 "
@@ -59,6 +62,7 @@ export default function IntegrationsSection() {
                         {/* TypeScript Integration */}
                         <motion.a
                             href="https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html"
+                            aria-label="TypeScript Documentation"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center rounded-lg p-6 "
@@ -71,6 +75,7 @@ export default function IntegrationsSection() {
                         {/* React Integration */}
                         <motion.a
                             href="https://react.dev/learn"
+                            aria-label="React Documentation"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center rounded-lg p-6 shadow-sm "
@@ -84,6 +89,7 @@ export default function IntegrationsSection() {
                         <motion.a
                             href="https://www.postgresql.org/docs/current/intro-whatis.html"
                             target="_blank"
+                            aria-label="PostgreSQL Documentation"
                             rel="noopener noreferrer"
                             className="flex flex-col items-center rounded-lg p-6 "
                             whileHover={{ scale: 1.05 }}
