@@ -31,7 +31,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                     <h1 className="text-3xl sm:text-5xl sm:pt-0 lg:text-6xl font-extrabold leading-tight text-white">
-                        <span className="text-white">Grow Your Business</span> with Search Engine Optimization
+                        Maximize Your Online Visibility with SEO
                     </h1>
                     <p className="text-lg md:text-xl text-white">
                         Get a tailored website that boosts traffic, grows with your business, and improves search rankings.

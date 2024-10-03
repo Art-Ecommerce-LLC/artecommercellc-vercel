@@ -16,7 +16,7 @@ export default function ServicesSection() {
             animate={isServicesInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
         >
-            <h3 className="text-4xl font-semibold text-white text-center mb-8 tracking-wide">How We Help Your Business Grow</h3>
+            <h3 className="text-4xl font-semibold text-white text-center mb-8 tracking-wide">How Your Business Grow</h3>
             <div className="max-w-7xl mx-auto space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Web Development */}
