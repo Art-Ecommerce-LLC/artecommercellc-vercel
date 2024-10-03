@@ -21,6 +21,8 @@
     --third-light: #35BFB2;
     --fourth-light: #DFD5BD;
     --fifth-contast: #E0744E;
+    --dark-grey: #121212;
+
 }
 
 .Button {
@@ -35,32 +37,4 @@
   &:hover {
     background-color: var(--hover-bg-color);
   }
-}
-
-.relative {
-  position: relative;
-}
-
-.navbar {
-  height: 70px; /* Define the fixed height */
-  position: fixed; /* Make the navbar fixed */
-  top: 0;
-  left: 0;
-  width: 100%; /* Full width */
-  z-index: 20; /* Ensure it stays above other content */
-}
-
-.hero {
-  min-height: calc(100vh - 70px); /* Full height minus navbar */
-  display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-}
-
-.services-item {
-  text-align: left;
-}
-
-.footer {
-  margin-top: 50px; /* Add margin to avoid overlap */
 }

@@ -11,8 +11,8 @@ export default function HeroSection() {
     const isAboutInView = useInView(aboutRef, { once: true });
 {/* Hero Section */}
  
-    return  <div className="w-full bg-gradient-to-br pb-16 px-6 lg:px-16 justify-center flex flex-col items-center mt-12">
-  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:space-x-12 py-12 px-4 lg:px-8 bg-black rounded-lg shadow-lg">
+    return  <div className="w-full bg-[var(--dark-grey)] pb-16 px-6 lg:px-16 justify-center flex flex-col items-center mt-12">
+  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:space-x-12 py-12 px-4 lg:px-8  rounded-lg shadow-lg">
     
     {/* Text Section */}
     <motion.div

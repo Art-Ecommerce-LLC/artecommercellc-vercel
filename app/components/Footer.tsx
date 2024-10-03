@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-black py-6 border-t-gray-1">
+        <footer className="bg-[var(--dark-grey)] py-6">
             <div className="container mx-auto text-center">
                 <nav className="mb-4">
                     {/* Modify flex-direction for 420px */}
@@ -14,24 +14,6 @@ const Footer: React.FC = () => {
                             </Link>
                         </li>
                         <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li>
-                        {/* <li className="flex items-center">
-                            <Link href="/about" className="text-gray-300 hover:text-white transition duration-300">
-                                About
-                            </Link>
-                        </li> */}
-                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
-                        {/* <li className="flex items-center">
-                            <Link href="/contact" className="text-gray-300 hover:text-white transition duration-300">
-                                Contact
-                            </Link>
-                        </li> */}
-                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
-                        {/* <li className="flex items-center">
-                            <Link href="/community" className="text-gray-300 hover:text-white transition duration-300">
-                                Community
-                            </Link>
-                        </li> */}
-                        {/* <li className="text-gray-500 mx-2 hidden custom-520:inline">|</li> */}
                         <li className="flex items-center">
                             <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
                                 Pricing

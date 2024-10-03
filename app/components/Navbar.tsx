@@ -29,6 +29,7 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
       isBordered
       isBlurred={false}
       position="static"
+      className="bg-[var(--dark-grey)]"
       classNames={{
         item: [
           "flex",
@@ -70,7 +71,7 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
         ))}
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="bg-[var(--dark-grey)]">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index} isActive={isActive === item.name}>
             <Link

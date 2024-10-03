@@ -6,8 +6,9 @@ import NavbarComponent from "../components/Navbar"; // Importing NavbarComponent
 import Footer from "../components/Footer"; // Importing Footer from the Footer file
 
 export default function Pricing() {
+
   return (
-    <div>
+    <div className="bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Pricing"}/>
     <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center mt-8 px-4 sm:px-8 md:px-12 lg:px-16">
       {/* Text Section */}
@@ -35,7 +36,7 @@ export default function Pricing() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Basic Plan */}
-        <div className="flex flex-col items-start bg-black p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
+        <div className="flex flex-col items-start bg-[var(--darg-grey)] p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
           <div className="flex items-center space-x-2 mb-4">
             <DevicePhoneMobileIcon className="h-6 w-6 text-blue-500" />
             <h3 className="text-xl sm:text-2xl font-bold text-white">Basic Plan</h3>
@@ -59,7 +60,7 @@ export default function Pricing() {
         </div>
 
         {/* Standard Plan */}
-        <div className="flex flex-col items-start bg-black p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
+        <div className="flex flex-col items-start bg-[var(--darg-grey)] p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
           <div className="flex items-center space-x-2 mb-4">
             <ComputerDesktopIcon className="h-6 w-6 text-yellow-500" />
             <h3 className="text-xl sm:text-2xl font-bold text-white">Standard Plan</h3>
@@ -87,7 +88,7 @@ export default function Pricing() {
         </div>
 
         {/* Premium Plan */}
-        <div className="flex flex-col items-start bg-black p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
+        <div className="flex flex-col items-start bg-[var(--dark-grey)] p-8 border border-gray-300 rounded-lg shadow-md transition-transform hover:scale-105">
           <div className="flex items-center space-x-2 mb-4">
             <CurrencyDollarIcon className="h-6 w-6 text-green-500" />
             <h3 className="text-xl sm:text-2xl font-bold text-white">Premium Plan</h3>
@@ -124,7 +125,7 @@ export default function Pricing() {
       >
         <a
           href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20a%20Plan"
-          className="py-3 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+          className="py-3 px-6 Button text-white rounded-lg flex items-center space-x-2"
         >
           <EnvelopeIcon className="h-5 w-5" />
           <span>Email Me to Get Started</span>

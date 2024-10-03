@@ -14,13 +14,13 @@ export default function HeroSection() {
  
     return  <motion.div
                 ref={heroRef}
-                className="hero w-full flex flex-col items-center justify-center bg-black min-h-[90vh] lg:pb-16"
+                className="hero w-full flex flex-col items-center justify-center bg-[var(--dark-grey)] min-h-[90vh] lg:pb-16"
                 initial={{ opacity: 0 }}
                 animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
                 transition={{ duration: 1 }}
             >
             {/* Hero Section Content */}
-            <div className="w-full max-w-7xl px-6 lg:px-16 space-y-8 lg:space-y-0 sm:mt-5">
+            <div className="w-full max-w-7xl p-6 lg:px-16 space-y-8 lg:space-y-0 ">
                 <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-8">
                     {/* Text Section */}
                     <motion.div
@@ -30,7 +30,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                     <h1 className="text-3xl sm:text-5xl sm:pt-0 lg:text-6xl font-extrabold leading-tight text-white">
-                        <span className="text-white">Grow Your Business</span> with SEO Websites
+                        <span className="text-white">Grow Your Business</span> with Search Engine Optimization
                     </h1>
                     <p className="text-lg md:text-xl text-white">
                         Get a tailored website that boosts traffic, grows with your business, and improves search rankings.

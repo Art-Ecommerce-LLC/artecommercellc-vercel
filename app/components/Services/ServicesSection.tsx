@@ -11,17 +11,17 @@ export default function ServicesSection() {
     return (
         <motion.div
             ref={servicesRef}
-            className="w-full py-16 px-6 lg:px-16 bg-black"
+            className="w-full py-16 px-6 lg:px-16 bg-[var(--dark-grey)]"
             initial={{ opacity: 0 }}
             animate={isServicesInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
         >
-            <h3 className="text-4xl font-semibold text-white text-center mb-8 tracking-wide">Our Services</h3>
+            <h3 className="text-4xl font-semibold text-white text-center mb-8 tracking-wide">How We Help Your Business Grow</h3>
             <div className="max-w-7xl mx-auto space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Web Development */}
                     <motion.div
-                        className="flex flex-col items-start text-left bg-black rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                        className="flex flex-col items-start text-left bg-[var(--dark-grey)] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
                         initial={{ x: 100, opacity: 0 }}
                         animate={isServicesInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -40,7 +40,7 @@ export default function ServicesSection() {
 
                     {/* SEO Optimization */}
                     <motion.div
-                        className="flex flex-col items-start text-left bg-black rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                        className="flex flex-col items-start text-left bg-[var(--dark-grey)] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
                         initial={{ x: 100, opacity: 0 }}
                         animate={isServicesInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -59,7 +59,7 @@ export default function ServicesSection() {
 
                     {/* Automation */}
                     <motion.div
-                        className="flex flex-col items-start text-left bg-black rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                        className="flex flex-col items-start text-left bg-[var(--dark-grey)] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
                         initial={{ x: 100, opacity: 0 }}
                         animate={isServicesInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}

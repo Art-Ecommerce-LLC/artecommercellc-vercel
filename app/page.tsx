@@ -10,7 +10,7 @@ import NavbarComponent from "./components/Navbar";
 export default function Home() {
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Home"} />
       <HeroSection />
       <AboutSection />
