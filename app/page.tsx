@@ -6,11 +6,17 @@ import IntegrationsSection from "./components/Integrations/IntegrationsSection";
 import AboutSection from "./components/About/AboutSection";
 import Footer from "./components/Footer";
 import NavbarComponent from "./components/Navbar";
+import Head from "next/head";
 
 export default function Home() {
 
   return (
-    <div className="w-full bg-[var(--dark-grey)]">
+    <>
+      <Head>
+          <title>Art Ecommerce-Home</title>
+          <meta name="description" content="Art Ecommerce Home Page" />
+      </Head>
+      <div className="w-full bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Home"} />
       <HeroSection />
       <AboutSection />
@@ -18,5 +24,6 @@ export default function Home() {
       <IntegrationsSection />
       <Footer />
     </div>
+    </>
   );
 }

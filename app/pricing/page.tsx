@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon } from "@heroicons/react/24/solid"; // Importing necessary icons
 import NavbarComponent from "../components/Navbar"; // Importing NavbarComponent from the Navbar file
 import Footer from "../components/Footer"; // Importing Footer from the Footer file
+import Head from "next/head"; // Importing Head from the next/head file
 
 export default function Pricing() {
 
   return (
+    <>
+      <Head>
+          <title>Art Ecommerce-Home</title>
+          <meta name="description" content="Art Ecommerce Home Page" />
+      </Head>
     <div className="bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Pricing"}/>
     <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center mt-8 px-4 sm:px-8 md:px-12 lg:px-16">
@@ -134,6 +140,6 @@ export default function Pricing() {
     </div>
     < Footer />
     </div>
-    
+    </>
   );
 }
