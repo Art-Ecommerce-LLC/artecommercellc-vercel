@@ -12,21 +12,21 @@ export default function HeroSection() {
 {/* Hero Section */}
  
     return  <div className="w-full bg-gradient-to-br pb-16 px-6 lg:px-16 justify-center flex flex-col items-center mt-12">
-  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:space-x-12 py-12 px-4 lg:px-8 bg-white rounded-lg shadow-lg">
+  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:space-x-12 py-12 px-4 lg:px-8 bg-black rounded-lg shadow-lg">
     
     {/* Text Section */}
     <motion.div
       ref={aboutRef}
-      className="w-full lg:w-1/2 space-y-6"
+      className="w-full lg:w-1/2 space-y-6 "
       initial={{ opacity: 0, x: -100 }}
       animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
       transition={{ duration: 0.8 }}
     >
-      <h2 className="text-4xl font-bold text-gray-900 text-center lg:text-left mb-6">About Me</h2>
-      <p className="text-lg text-gray-700 leading-relaxed text-left">
+      <h2 className="text-4xl font-bold text-white text-center lg:text-left mb-6">About Me</h2>
+      <p className="text-lg text-white leading-relaxed text-left">
         Hi, I&#39;m Ben, a passionate software engineer with a focus on delivering high-quality, SEO-friendly, and scalable websites. Over the past year, I&#39;ve worked closely with clients to create tailored solutions that meet their business needs.
       </p>
-      <p className="text-lg text-gray-700 leading-relaxed text-left">
+      <p className="text-lg text-white leading-relaxed text-left">
         I&#39;m dedicated to ensuring my clients&#39; success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
       </p>
 
@@ -38,19 +38,19 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <a href="https://www.linkedin.com/company/art-ecommerce-llc/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className="text-4xl text-gray-700 hover:text-blue-600 transition-colors duration-300" />
+          <FaLinkedin className="text-4xl text-white hover:text-blue-400 transition-colors duration-300" />
         </a>
         <a href="https://www.github.com/Art-Ecommerce-LLC" target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-4xl text-gray-700 hover:text-black transition-colors duration-300" />
+          <FaGithub className="text-4xl text-white hover:text-green-400 transition-colors duration-300" />
         </a>
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook className="text-4xl text-gray-700 hover:text-blue-500 transition-colors duration-300" />
+          <FaFacebook className="text-4xl text-white hover:text-blue-500 transition-colors duration-300" />
         </a>
         <a href="https://www.instagram.com/artecommercellc" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-4xl text-gray-700 hover:text-pink-500 transition-colors duration-300" />
+          <FaInstagram className="text-4xl text-white hover:text-pink-500 transition-colors duration-300" />
         </a>
         <a href="https://x.com/ArtEcommerceLLC" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className="text-4xl text-gray-700 hover:text-blue-400 transition-colors duration-300" />
+          <FaTwitter className="text-4xl text-white hover:text-blue-400 transition-colors duration-300" />
         </a>
       </motion.div>
     </motion.div>

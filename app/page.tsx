@@ -1,18 +1,22 @@
 "use client";
 
-import HeroSection from "@/app/components/Hero/HeroSection";
-import ServicesSection from "@/app/components/Services/ServicesSection";
-import IntegrationsSection from "@/app/components/Integrations/IntegrationsSection";
-import AboutSection from "@/app/components/About/AboutSection";
+import HeroSection from "./components/Hero/HeroSection";
+import ServicesSection from "./components/Services/ServicesSection";
+import IntegrationsSection from "./components/Integrations/IntegrationsSection";
+import AboutSection from "./components/About/AboutSection";
+import Footer from "./components/Footer";
+import NavbarComponent from "./components/Navbar";
 
 export default function Home() {
 
   return (
     <div className="w-full">
+      <NavbarComponent isActive={"Home"} />
       <HeroSection />
       <AboutSection />
       <ServicesSection />
       <IntegrationsSection />
+      <Footer />
     </div>
   );
 }
