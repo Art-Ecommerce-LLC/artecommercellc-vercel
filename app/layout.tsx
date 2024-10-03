@@ -9,6 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     
     <html lang="en">
       <head>
+        <title>Art Ecommerce</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
       <body className={`${inter.className} dark text-foreground bg-background`}>
