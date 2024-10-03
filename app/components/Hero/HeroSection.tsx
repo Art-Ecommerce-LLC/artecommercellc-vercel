@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { Button } from "@nextui-org/react";
 import { BoltIcon, ScaleIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/solid";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
-import RotatingGearCanvas from '../Gear'; // Adjust the import path
 
 export default function HeroSection() {
 
