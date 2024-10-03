@@ -6,12 +6,23 @@ import { useRef } from "react";
 import { Button } from "@nextui-org/react";
 import { BoltIcon, ScaleIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/solid";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import RotatingGearCanvas from '../Gear'; // Adjust the import path
 
 export default function HeroSection() {
 
     const heroRef = useRef(null);
     const isHeroInView = useInView(heroRef, { once: true });
-{/* Hero Section */}
+    const gearRotationVariants = {
+        initial: { rotate: 0 },
+        animate: {
+            rotate: [180, 360], // Start at 0 degrees, rotate to 360
+            transition: {
+                duration: 1,      // Adjust how long the rotation takes
+                ease: "easeOut",  // Slow down towards the end
+                repeat: 0         // Ensure it only rotates once
+            },
+        },
+    };
  
     return  <motion.div
                 ref={heroRef}
@@ -65,25 +76,27 @@ export default function HeroSection() {
                     </div>
                     </motion.div>
 
-                    {/* Image Section */}
-                    <motion.div
-                    className="w-full lg:w-1/2 flex flex-col items-center justify-center space-y-8"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                     {/* Rotating Gear Image */}
+                     <motion.div
+                        className="w-full lg:w-1/2 flex flex-col items-center justify-center space-y-8"
+                        initial={{ opacity: 0 }}
+                        animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                    <div className="w-full max-w-sm lg:max-w-md">
-                        <Image
-                        src={"/seogear.png"}
-                        alt="SEO Gear"
-                        className="object-cover"
-                        priority={true}
-                        blurDataURL="data:image/jpeg;base64,..."
-                        height={500}
-                        width={500}
-                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    </div>
+                        <motion.div
+                            variants={gearRotationVariants}
+                            initial="initial"
+                            animate="animate"
+                        >
+                            <Image
+                                src="/seogear.png"
+                                alt="SEO Gear"
+                                className="object-cover"
+                                priority={true}
+                                height={500}
+                                width={500}
+                            />
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

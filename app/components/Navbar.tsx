@@ -72,6 +72,7 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
       </NavbarContent>
 
       <NavbarMenu className="bg-[var(--dark-grey)]">
+        
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index} isActive={isActive === item.name}>
             <Link
