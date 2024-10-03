@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@headlessui/react";
+import { Button } from "@nextui-org/react";
 import { BoltIcon, ScaleIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export default function HeroSection() {
 
@@ -50,12 +51,15 @@ export default function HeroSection() {
                         </li>
                     </ul>
                     <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                        <Button
+                    <Button
+                        href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20a%20Plan"
+                        className="py-5 px-6 rounded-lg flex items-center space-x-2"
+                        color="primary"
                         as="a"
-                        href="mailto:ben@artecommercellc.com?subject=Get%20a%20Free%20Consultation"
-                        className="px-6 py-3 bg-[var(--button-bg-color)] text-white font-semibold rounded-lg shadow-lg hover:bg-[var(--hover-bg-color)]"
                         >
-                        Get Your Free SEO Audit Today!
+                        <EnvelopeIcon className="h-5 w-5" />
+                        
+                        Get a Free Consultation
                         </Button>
                         <p className="text-white">Or call me at <strong>(858) 519-2727</strong></p>
                     </div>

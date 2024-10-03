@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon } from "@heroicons/react/24/solid"; // Importing necessary icons
+import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon } from "@heroicons/react/24/solid";
+import {Button} from "@nextui-org/react"; // Importing necessary icons
 import NavbarComponent from "../Navbar"; // Importing NavbarComponent from the Navbar file
 import Footer from "../Footer"; // Importing Footer from the Footer file
 
@@ -124,13 +125,15 @@ export default function Pricing() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <a
+        <Button
           href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20a%20Plan"
-          className="py-3 px-6 Button text-white rounded-lg flex items-center space-x-2"
+          className="py-5 px-6 rounded-lg flex items-center space-x-2"
+          color="primary"
+          as="a"
         >
           <EnvelopeIcon className="h-5 w-5" />
-          <span>Email Me to Get Started</span>
-        </a>
+          Email Me to Get Started
+        </Button>
       </motion.div>
     </div>
     < Footer />
