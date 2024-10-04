@@ -43,7 +43,7 @@ const MetricsOverview: React.FC = () => {
 
         {/* Centered Paragraph, with text left-aligned */}
         <p className="text-left text-lg text-white max-w-3xl mx-auto mb-12">
-          We focus on delivering high-performing websites that are optimized for SEO, accessibility, and speed. Our strategies ensure your website ranks higher and provides the best user experience, helping you drive more conversions.
+          I focus on delivering high-performing websites that are optimized for SEO, accessibility, and speed. Our strategies ensure your website ranks higher and provides the best user experience, helping you drive more conversions.
         </p>
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -57,7 +57,7 @@ const MetricsOverview: React.FC = () => {
           <CircleProgress score={91} label="Accessibility" color="#FF9800" startAnimation={startAnimation} />
 
           {/* Speed Score */}
-          <CircleProgress score={88} label="Speed" color="#03A9F4" startAnimation={startAnimation} />
+          <CircleProgress score={88} label="Performace" color="#03A9F4" startAnimation={startAnimation} />
 
         </div>
 
