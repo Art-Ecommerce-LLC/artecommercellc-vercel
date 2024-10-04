@@ -9,7 +9,7 @@ interface CircleProgressProps {
   startAnimation: boolean; // Control to start the percentage animation
 }
 
-const CircleProgress: React.FC<CircleProgressProps> = ({ score, label, color, startAnimation }) => {
+export default function CircleProgress({ score, label, color, startAnimation }: CircleProgressProps) {
   const [animatedScore, setAnimatedScore] = useState(0);
 
   useEffect(() => {
@@ -89,5 +89,3 @@ const CircleProgress: React.FC<CircleProgressProps> = ({ score, label, color, st
     </motion.div>
   );
 };
-
-export default CircleProgress;

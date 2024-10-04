@@ -5,7 +5,7 @@ import CircleProgress from "./CircleProgress";
 import { Button } from "@nextui-org/react";
 import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
 
-const MetricsOverview: React.FC = () => {
+export  default function MetricsOverview() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true });
   const [startAnimation, setStartAnimation] = useState(false);
@@ -77,4 +77,3 @@ const MetricsOverview: React.FC = () => {
   );
 };
 
-export default MetricsOverview;
