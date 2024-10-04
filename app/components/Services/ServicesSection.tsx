@@ -57,7 +57,7 @@ export default function ServicesSection() {
               <h3 className="text-xl font-semibold text-white">Search Engine Optimization</h3>
             </div>
             <p className="text-white mt-4">
-              Boost your search engine rankings with SEO strategies built into every page.
+              Boost your search engine rankings with strategies built into every page.
             </p>
             <p className="text-sm text-yellow-400 font-semibold mt-2">100% Client Satisfaction!</p>
             <Button
