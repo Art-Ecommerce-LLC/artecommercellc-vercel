@@ -19,6 +19,24 @@ const Footer: React.FC = () => {
                                 Pricing
                             </Link>
                         </li>
+                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
+                        <li className="flex items-center">
+                            <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
+                                Appointments
+                            </Link>
+                        </li>
+                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
+                        <li className="flex items-center">
+                            <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition duration-300">
+                                Privacy Policy
+                            </Link>
+                        </li>
+                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
+                        <li className="flex items-center">
+                            <Link href="/terms-of-service" className="text-gray-300 hover:text-white transition duration-300">
+                                Terms of Service
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
                 <p className="text-white">&copy; 2024 Art Ecommerce, LLC.</p>

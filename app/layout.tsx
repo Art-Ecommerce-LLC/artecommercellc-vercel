@@ -1,6 +1,7 @@
 import './globals.css';  // Add your global styles here
 import { Inter } from 'next/font/google';
 import {NextUIProvider} from "@nextui-org/react";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ['latin'] });
  
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>
           {children}
         </main>
+          <Toaster />
         </NextUIProvider>
       </body>
     </html>

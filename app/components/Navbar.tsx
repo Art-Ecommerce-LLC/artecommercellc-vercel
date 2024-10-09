@@ -21,6 +21,7 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Pricing", href: "/pricing" },
+    { name: "Appointments", href: "/appointments" },
   ];
 
   return (
@@ -59,11 +60,11 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
-          <NavbarItem key={index} isActive={isActive === item.name}>
+          <NavbarItem key={index} isActive={isActive === item.name && isActive !== ""}>
             <Link
               href={item.href}
-              className={isActive === item.name ? "text-primary" : "text-white"}
-              aria-current={isActive === item.name ? "page" : undefined}
+              className={isActive === item.name && isActive !== "" ? "text-primary" : "text-white"}
+              aria-current={isActive === item.name && isActive !== "" ? "page" : undefined}
             >
               {item.name}
             </Link>
@@ -72,14 +73,13 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
       </NavbarContent>
 
       <NavbarMenu className="bg-[var(--dark-grey)]">
-        
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={index} isActive={isActive === item.name}>
+          <NavbarMenuItem key={index} isActive={isActive === item.name && isActive !== ""}>
             <Link
               className="w-full text-white"
               href={item.href}
               size="lg"
-              aria-current={isActive === item.name ? "page" : undefined}
+              aria-current={isActive === item.name && isActive !== "" ? "page" : undefined}
             >
               {item.name}
             </Link>
