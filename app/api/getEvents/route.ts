@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import db from '@/lib/db'; // Assuming you're using Prisma for DB access
-import { start } from 'repl';
+import { EventType } from '@/lib/models';
 
 export async function POST(request: NextRequest) {
     try {
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         console.log('events:', events);
 
         // Parse through available events and format the response
-        const availableEvents = events.map((event) => {
+        const availableEvents = events.map((event : EventType) => {
             return {
                 id: event.id,
                 summary: event.description,

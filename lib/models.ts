@@ -20,3 +20,14 @@ export interface SelectScrollableProps {
     availableEvents: Event[]; // Array of available events from the parent component
     field: ControllerRenderProps<SelectProps>; // React Hook Form field props
   }
+
+export interface EventType {
+    id: number;
+    title: string;
+    description: string;
+    date: Date;
+    isBooked: boolean;
+    guestEmail: string | null;
+    googleEventId: string | null;
+    serviceToken: string;
+}
