@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import CircleProgress from "./CircleProgress";
 import { Button } from "@nextui-org/react";
-import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
+import { CalendarIcon } from "@heroicons/react/24/solid";
 
 export  default function MetricsOverview() {
   const sectionRef = useRef(null);
@@ -63,13 +63,13 @@ export  default function MetricsOverview() {
 
         <div className="text-center mt-12">
           <Button
-            as="a"
-            href="mailto:ben@artecommercellc.com?subject=Boost%20My%20Performance"
             color="secondary"
             className="height-[6rem]"
+            as="a"
+            href="/appointments"
           >
-            <CurrencyDollarIcon className="h-5 w-5" />
-            Get a Free Performance Audit
+            <CalendarIcon className="h-5 w-5" />
+            Get a Free Perfomance Audit
           </Button>
         </div>
       </div>

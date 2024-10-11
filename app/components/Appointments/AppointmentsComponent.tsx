@@ -141,16 +141,16 @@ export function AppointmentsComponent() {
             <div className="flex justify-center">
             {loading ? (
                 <Spinner /> // Show spinner while loading
-              ) : (
-              <Calendar
-                mode="single"
-                selected={selectedDate}
-                onSelect={setSelectedDate}
-                availableEvents={availableEvents} // Pass available events as strings to Calendar
-                className="rounded-md border border-gray-600"
-                fromDate={new Date()}
-                toDate={new Date(new Date().setMonth(new Date().getMonth() + 1))} // Limit to next month
-              />
+              ) : ( 
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  availableEvents={formLoading ? [] : availableEvents}  // Pass available events as strings to Calendar
+                  className="rounded-md border border-gray-600"
+                  fromDate={new Date()}
+                  toDate={new Date(new Date().setMonth(new Date().getMonth() + 1))} // Limit to next month
+                />
             )}
             </div>
           </div>

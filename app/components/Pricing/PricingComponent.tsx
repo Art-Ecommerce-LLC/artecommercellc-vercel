@@ -82,7 +82,7 @@ export default function Pricing() {
                 className="py-4 px-6 mt-4 rounded-lg text-white bg-blue-500 hover:bg-blue-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
                 color="primary"
                 as="a"
-              href="/appointments"
+                href="/appointments"
               >
                 <CalendarIcon className="h-5 w-5" />
                 Get Started
