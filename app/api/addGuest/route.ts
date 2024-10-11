@@ -35,7 +35,7 @@ function convertToUTC(dateTimeStr: string, timezone: string): Date {
 
   // Put the date and time together in the format "YYYY-MM-DDTHH:MM:SS"
   const [month, day, year] = date.split('/');
-  const formattedDate = `${year}-${month}-${day}`;
+  const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
   const formattedTime = `${String(hours24).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
   const dateTime = `${formattedDate}T${formattedTime}`;
 
