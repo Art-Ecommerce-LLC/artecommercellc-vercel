@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import db from '@/lib/db'; // Assuming you're using Prisma for DB access
 import { EventType } from '@/lib/models';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
     try {
         // Parse the request body (you might want to add validation here)
         const serviceToken = process.env.SERVICE_TOKEN;
@@ -18,9 +18,6 @@ export async function POST(request: NextRequest) {
             },
             take: 200
         });
-
-        // Make theend date 30 minutes after the start date
-        console.log('events:', events);
 
         // Parse through available events and format the response
         const availableEvents = events.map((event : EventType) => {

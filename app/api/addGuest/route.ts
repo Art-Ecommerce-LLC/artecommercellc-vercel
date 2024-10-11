@@ -11,9 +11,7 @@ const schema = z.object({
 
 
 function convertToUTC(dateTimeStr: string, timezone: string): Date {
-  // Example input format: "10/8/2024 - 01:03 PM PDT"
-  console.log('dateTimeStr:', dateTimeStr);
-  console.log('timezone:', timezone);
+
   const [date, time] = dateTimeStr.split(' - ');
   const [timeValue, meridiem, timeAbbreviation] = time.split(' ');
 
@@ -50,9 +48,9 @@ export async function POST(request: NextRequest) {
     // Parse request body and validate schema
     const body = await request.json();
     const { dateTime, timezone, guestEmail, description } = schema.parse(body);
-    console.log('timezone:', timezone);
+
     const utcDateTime = convertToUTC(dateTime, timezone);
-    console.log('utcDateTime:', utcDateTime);
+
     const serviceToken = process.env.SERVICE_TOKEN;
     if (!serviceToken) {
       return NextResponse.json({ error: 'Service token not found' }, { status: 500 });

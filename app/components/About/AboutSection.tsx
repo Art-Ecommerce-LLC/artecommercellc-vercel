@@ -12,18 +12,15 @@ export default function AboutSection() {
   return (
     <div className="w-full bg-[var(--dark-grey)] pb-16 px-6 lg:px-16 justify-center flex flex-col items-center mt-12">
       <motion.div
-        className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-start lg:space-x-0 py-12 px-4 lg:px-8"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        ref={aboutRef}
+        className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-start lg:space-x-0 py-12 px-0 lg:px-0 w-full"
+        initial={{ opacity: 0, x: -100 }}
+        animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Image and Social Media Section */}
-        <motion.div
-          ref={aboutRef}
+        <div
           className="w-full mr-4 lg:w-auto flex flex-col justify-center items-center mt-0 lg:mt-0"
-          initial={{ opacity: 0, x: -100 }}
-          animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="relative w-[225px] h-[225px] sm:w-[225px] sm:h-[225px] lg:w-[225px] lg:h-[225px] rounded-full overflow-hidden border-4 border-indigo-600 shadow-lg mb-2 ">
             <Image
@@ -35,13 +32,10 @@ export default function AboutSection() {
               priority
             />
           </div>
-
+        
           {/* Social Media Links */}
-          <motion.div
+          <div
             className="flex justify-center space-x-4 mb-4"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <a href="https://www.linkedin.com/company/art-ecommerce-llc/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="text-3xl text-white hover:text-blue-400 transition-colors duration-300" />
@@ -58,15 +52,12 @@ export default function AboutSection() {
             <a href="https://x.com/ArtEcommerceLLC" target="_blank" rel="noopener noreferrer">
               <FaTwitter className="text-3xl text-white hover:text-blue-400 transition-colors duration-300" />
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Text Section */}
-        <motion.div
-          className="w-full lg:w-auto space-y-4 mt-0 lg:mt-0 bg-[rgba(255,255,255,0.05)] border-l-4 border-indigo-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition-transform hover:scale-105 transform lg:flex lg:flex-col lg:justify-center "
-          initial={{ opacity: 0, x: 100 }}
-          animate={isAboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        <div
+          className="w-full space-y-4 mt-0 lg:mt-0 bg-[rgba(255,255,255,0.05)] border-l-4 border-indigo-600 rounded-lg shadow-lg p-6 hover:shadow-xl lg:flex lg:flex-col lg:justify-center "
         >
           <h2 className="text-4xl font-bold text-white text-left mb-4">
             About Me
@@ -77,7 +68,7 @@ export default function AboutSection() {
           <p className="text-lg text-white leading-relaxed text-left">
             I&#39;m dedicated to ensuring my clients&#39; success by leveraging modern tools and strategies. I take pride in being adaptable, detail-oriented, and committed to client satisfaction.
           </p>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );

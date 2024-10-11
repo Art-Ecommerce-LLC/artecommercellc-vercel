@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon } from "@heroicons/react/24/solid";
-import { Button } from "@nextui-org/react"; // Importing necessary icons
-import NavbarComponent from "../Navbar"; // Importing NavbarComponent from the Navbar file
-import Footer from "../Footer"; // Importing Footer from the Footer file
+import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon, CalendarIcon } from "@heroicons/react/24/solid";
+import { Button } from "@nextui-org/react";
+import NavbarComponent from "../Navbar";
+import Footer from "../Footer";
+
 
 export default function Pricing() {
   return (
     <div className="bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Pricing"} />
-      <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center mt-8 px-4 sm:px-8 md:px-12 lg:px-16">
+      <div className="w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Text Section */}
         <motion.div
           className="flex flex-col justify-start w-full max-w-4xl space-y-6 text-left"
@@ -22,9 +23,6 @@ export default function Pricing() {
             Pricing
             <CurrencyDollarIcon className="w-10 h-10 text-white ml-2" />
           </h2>
-          <p className="text-base sm:text-lg md:text-xl xl:text-2xl text-white max-w-3xl">
-            My pricing is based on the complexity of the project, specific requirements, and duration of labor. I offer competitive rates with flexible payment options to accommodate various budgets. Contact me for a detailed quote tailored to your needs.
-          </p>
         </motion.div>
 
         {/* Pricing Details */}
@@ -45,30 +43,50 @@ export default function Pricing() {
               <DevicePhoneMobileIcon className="h-6 w-6 text-blue-500" />
               <h3 className="text-xl sm:text-2xl font-bold text-white">Basic Plan</h3>
             </div>
-            <p className="text-white">Ideal for small projects and startups.</p>
-            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$500+</div>
+            <p className="text-white">Ideal for small businesses and startups.</p>
+            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$2K</div>
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Up to 5 pages</span>
+                <span>1 page</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <CogIcon className="h-5 w-5 text-gray-500" />
+                <span>Custom design</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Responsive layout</span>
               </li>
+              
               <li className="flex items-center space-x-2">
                 <EnvelopeIcon className="h-5 w-5 text-blue-500" />
                 <span>Email support</span>
               </li>
+              
             </ul>
-            <Button
-              className="py-4 px-6 mt-4 rounded-lg text-white bg-blue-500 hover:bg-blue-600 transition-transform transform hover:scale-105"
-              color="primary"
-              as="a"
-              href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20the%20Basic%20Plan"
-            >
-              Get Started
-            </Button>
+            <div className="mt-6 text-white">
+              <h4 className="text-lg font-semibold">Additional Costs:</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Maintenance & Hosting: $100/month</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Website updates after delivery: $300</span>
+                </li>
+              </ul>
+            </div>
+              <Button
+                className="py-4 px-6 mt-4 rounded-lg text-white bg-blue-500 hover:bg-blue-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
+                color="primary"
+                as="a"
+              href="/appointments"
+              >
+                <CalendarIcon className="h-5 w-5" />
+                Get Started
+              </Button>
           </motion.div>
 
           {/* Standard Plan */}
@@ -83,11 +101,11 @@ export default function Pricing() {
               <h3 className="text-xl sm:text-2xl font-bold text-white">Standard Plan</h3>
             </div>
             <p className="text-white">Perfect for medium-sized projects.</p>
-            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$1000+</div>
+            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$3K</div>
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Up to 10 pages</span>
+                <span>Up to 5 pages</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CogIcon className="h-5 w-5 text-gray-500" />
@@ -102,14 +120,28 @@ export default function Pricing() {
                 <span>Priority email support</span>
               </li>
             </ul>
-            <Button
-              className="py-4 px-6 mt-4 rounded-lg text-white bg-yellow-500 hover:bg-yellow-600 transition-transform transform hover:scale-105"
-              color="primary"
-              as="a"
-              href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20the%20Standard%20Plan"
-            >
-              Get Started
-            </Button>
+            <div className="mt-6 text-white">
+              <h4 className="text-lg font-semibold">Additional Costs:</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Maintenance & Hosting: $100/month</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Website updates after delivery: $300</span>
+                </li>
+              </ul>
+            </div>
+              <Button
+                className="py-4 px-6 mt-4 rounded-lg text-white bg-yellow-500 hover:bg-yellow-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
+                color="primary"
+                as="a"
+                href="/appointments"
+              >
+                <CalendarIcon className="h-5 w-5" />
+                Get Started
+              </Button>
           </motion.div>
 
           {/* Premium Plan */}
@@ -124,52 +156,52 @@ export default function Pricing() {
               <h3 className="text-xl sm:text-2xl font-bold text-white">Premium Plan</h3>
             </div>
             <p className="text-white">For complex, large-scale projects.</p>
-            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$2000+</div>
+            <div className="text-3xl sm:text-4xl font-bold text-white mt-4">$10K</div>
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Unlimited pages</span>
+                <span>Up to 10 Pages</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CogIcon className="h-5 w-5 text-gray-500" />
-                <span>Advanced design</span>
+                <span>Custom design</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Custom integrations</span>
+                <span>Custom Integrations</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>Responsive layout</span>
               </li>
               <li className="flex items-center space-x-2">
                 <EnvelopeIcon className="h-5 w-5 text-blue-500" />
                 <span>24/7 priority support</span>
               </li>
             </ul>
-            <Button
-              className="py-4 px-6 mt-4 rounded-lg text-white bg-green-500 hover:bg-green-600 transition-transform transform hover:scale-105"
-              color="primary"
-              as="a"
-              href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20the%20Premium%20Plan"
-            >
-              Get Started
-            </Button>
+            <div className="mt-6 text-white">
+              <h4 className="text-lg font-semibold">Additional Costs:</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Maintenance & Hosting: $500/month</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <span>Website updates after delivery: $300</span>
+                </li>
+              </ul>
+            </div>
+              <Button
+                className="py-4 px-6 mt-4 rounded-lg text-white bg-green-500 hover:bg-green-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
+                color="primary"
+                as="a"
+                href="/appointments"
+              >
+                <CalendarIcon className="h-5 w-5" />
+                Get Started
+              </Button>
           </motion.div>
-        </motion.div>
-
-        {/* Email Me Button for All Plans */}
-        <motion.div
-          className="mt-12 mb-6" // Add margin on the top and bottom for spacing
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Button
-            href="mailto:ben@artecommercellc.com?subject=Get%20Started%20with%20a%20Plan"
-            className="py-5 px-6 rounded-lg flex items-center space-x-2"
-            color="primary"
-            as="a"
-          >
-            <EnvelopeIcon className="h-5 w-5" />
-            Email Me to Get Started
-          </Button>
         </motion.div>
       </div>
       <Footer />

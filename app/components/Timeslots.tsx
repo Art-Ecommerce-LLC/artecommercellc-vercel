@@ -15,7 +15,7 @@ import { SelectScrollableProps } from "@/lib/models"; // Import Event and Select
 
 
 
-export function SelectScrollable({ field, selectedDate, availableEvents=[] }: SelectScrollableProps) {
+export function SelectScrollable({ field, selectedDate, availableEvents=[], disabled }: SelectScrollableProps) {
   // Filter available events based on the selected date
   const filteredEvents = availableEvents.filter((event) => {
     if (!selectedDate) return false;
@@ -37,7 +37,7 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[] }: Se
   };
 
   return (
-    <Select onValueChange={field.onChange} defaultValue={field.value}>
+    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={disabled}>
       <FormControl>
       <SelectTrigger className="w-[280px]">
         <SelectValue placeholder="Select a time slot" />

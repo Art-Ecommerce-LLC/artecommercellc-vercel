@@ -38,6 +38,7 @@
     "react-spring": "^9.7.4",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
+    "ws": "^8.18.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

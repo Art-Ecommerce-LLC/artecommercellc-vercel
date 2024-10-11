@@ -19,6 +19,7 @@ export interface SelectScrollableProps {
     selectedDate: Date | undefined; // The date selected by the user in the calendar
     availableEvents: Event[]; // Array of available events from the parent component
     field: ControllerRenderProps<SelectProps>; // React Hook Form field props
+    disabled: boolean;
   }
 
 export interface EventType {

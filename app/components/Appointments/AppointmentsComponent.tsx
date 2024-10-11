@@ -19,6 +19,8 @@ import { z } from "zod";
 import { Event } from "@/lib/models"; // Import Event from models
 import { useToast } from "@/hooks/use-toast";
 import { Spinner } from "@nextui-org/spinner";
+import Link from "next/link";
+
 
 
 // Schema for form validation
@@ -32,13 +34,15 @@ export function AppointmentsComponent() {
   const [loading, setLoading] = React.useState(false);
   const [availableEvents, setAvailableEvents] = React.useState<Event[]>([]);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
+  const [formLoading, setFormLoading] = React.useState(false); // For form submission
+
   const isAppointmentRef = React.useRef(null);
   const isAppointmentInView = useInView(isAppointmentRef, { once: true });
   const { toast } = useToast()  
   // Fetch available events on mount
-  React.useEffect(() => {
+
+  const fetchAvailableEvents = async () => {
     setLoading(true); // Set loading to true while fetching
-    const fetchAvailableEvents = async () => {
       try {
         const response = await fetch("/api/getEvents", {
           method: "POST",
@@ -55,11 +59,11 @@ export function AppointmentsComponent() {
         setAvailableEvents(data.events); // Store the events as is 
         setLoading(false); // Set loading to false after events are fetched(strings for start/end)
       } catch (error) {
-        console.error("Error fetching available events:");
         setLoading(false); // Set loading to false after events are fetched
       }
     };
 
+  React.useEffect(() => {
     fetchAvailableEvents();
   }, []);
 
@@ -77,6 +81,7 @@ export function AppointmentsComponent() {
 
   // Handle form submission
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setFormLoading(true); // Set loading to true while submitting
     try {
       // Prepare the request body with form values and the service token
       const requestBody = {
@@ -98,12 +103,14 @@ export function AppointmentsComponent() {
       if (result.error) {
         throw new Error();
       } else {
-        toast({
-            title: "Meeting Scheduled!",
-            description: `${requestBody.dateTime}`,
-
-          })
+        await fetchAvailableEvents(); // Fetch available events again
         form.reset();
+        setFormLoading(false); // Set loading to false after submitting
+        toast({
+          title: "Meeting Scheduled! You will receive an email confirmation shortly.",
+          description: `${requestBody.dateTime}`,
+
+        })
       }
 
 
@@ -112,14 +119,14 @@ export function AppointmentsComponent() {
             variant: "destructive",
             title: "Error scheduling appointment",
         })
-        
+        setFormLoading(false); // Set loading to false after submitting
     }
   }
 
   return (
     <div className="w-full min-h-[90vh] flex flex-col justify-center items-center min-w-[320px]">
       {/* Main container for the Calendar and Form */}
-      <div className="w-full lg:max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="w-full lg:max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Calendar Section */}
         <motion.div
           ref={isAppointmentRef}
@@ -171,7 +178,8 @@ export function AppointmentsComponent() {
                     <SelectScrollable
                         field={field}
                         selectedDate={selectedDate}
-                        availableEvents={availableEvents} // Pass availableEvents to SelectScrollable
+                        availableEvents={availableEvents}
+                        disabled={formLoading} // Pass availableEvents to SelectScrollable
                     />
               <FormMessage />
             </FormItem>
@@ -188,6 +196,7 @@ export function AppointmentsComponent() {
                       <Input
                         className="bg-[rgba(255,255,255,0.1)] text-white border border-gray-600"
                         placeholder="your-email@example.com"
+                        disabled={formLoading}
                         {...field}
                       />
                     </FormControl>
@@ -207,6 +216,7 @@ export function AppointmentsComponent() {
                       <Textarea
                         className="bg-[rgba(255,255,255,0.1)] text-white border border-gray-600"
                         placeholder="Describe your appointment"
+                        disabled={formLoading}
                         {...field}
                       />
                     </FormControl>
@@ -217,10 +227,24 @@ export function AppointmentsComponent() {
 
               {/* Submit Button */}
               <div className="flex justify-center">
-                <Button type="submit" className="w-full lg:w-auto bg-indigo-600 text-white">
-                  Book Appointment
+                <Button type="submit" className="w-full lg:w-auto bg-indigo-600 text-white" disabled={formLoading}>
+                {formLoading ? <Spinner size="sm" /> : "Book Appointment"}
                 </Button>
+                
               </div>
+                <ul className="flex flex-col lg:flex-row justify-center items-center lg:space-y-0 space-y-3">
+                    <li>
+                          <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition duration-300">
+                              Privacy Policy
+                          </Link>
+                      </li>
+                    <li className="text-white mx-2 hidden custom-520:inline"></li>
+                    <li>
+                          <Link href="/terms-of-service" className="text-gray-300 hover:text-white transition duration-300">
+                              Terms of Service
+                          </Link>
+                    </li>
+                  </ul>
             </form>
           </Form>
         </motion.div>

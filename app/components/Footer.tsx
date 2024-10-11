@@ -7,37 +7,27 @@ const Footer: React.FC = () => {
             <div className="container mx-auto text-center">
                 <nav className="mb-4">
                     {/* Modify flex-direction for 420px */}
-                    <ul className="flex flex-col custom-520:flex-row justify-center items-center space-y-4 custom-520:space-y-0 custom-520:space-x-4">
-                        <li className="flex items-center">
-                            <Link href="/" className="text-gray-300 hover:text-white transition duration-300">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
-                            <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
-                                Pricing
-                            </Link>
-                        </li>
-                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
-                            <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
-                                Appointments
-                            </Link>
-                        </li>
-                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
-                            <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition duration-300">
-                                Privacy Policy
-                            </Link>
-                        </li>
-                        <li className="text-white mx-2 hidden custom-520:inline">|</li>
-                        <li className="flex items-center">
-                            <Link href="/terms-of-service" className="text-gray-300 hover:text-white transition duration-300">
-                                Terms of Service
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className='mb-2'>
+                        <ul className="flex flex-col custom-520:flex-row justify-center items-center space-y-4 custom-520:space-y-0 custom-520:space-x-4">
+                            <li className="flex items-center">
+                                <Link href="/" className="text-gray-300 hover:text-white transition duration-300">
+                                    Home
+                                </Link>
+                            </li>
+                            <li className="text-white mx-2 hidden custom-520:inline">|</li>
+                            <li className="flex items-center">
+                                <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
+                                    Pricing
+                                </Link>
+                            </li>
+                            <li className="text-white mx-2 hidden custom-520:inline">|</li>
+                            <li className="flex items-center">
+                                <Link href="/pricing" className="text-gray-300 hover:text-white transition duration-300">
+                                    Appointments
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
                 <p className="text-white">&copy; 2024 Art Ecommerce, LLC.</p>
             </div>
