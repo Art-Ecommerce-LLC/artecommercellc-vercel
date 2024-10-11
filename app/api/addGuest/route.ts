@@ -25,7 +25,7 @@ function convertToUTC(dateTimeStr: string, timezone: string): Date {
 
   // if the meridiem is pm then add 12 hours to the time value
   const [hours, minutes] = timeValue.split(':').map(Number);
-
+  console.log(isPM, hours)
   let hours24 = hours;
   if (isPM && hours !== 12) {
     hours24 = hours + 12;
