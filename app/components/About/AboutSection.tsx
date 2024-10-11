@@ -8,7 +8,7 @@ import { FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaTwitter } from "react-
 export default function AboutSection() {
   const aboutRef = useRef(null);
   const isAboutInView = useInView(aboutRef, { once: true });
-
+  // main force
   return (
     <div className="w-full bg-[var(--dark-grey)] pb-16 px-6 lg:px-16 justify-center flex flex-col items-center mt-12">
       <motion.div
