@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { toZonedTime } from 'date-fns-tz';
+import { fromZonedTime } from 'date-fns-tz';
 
 const schema = z.object({
   dateTime: z.string(),
@@ -40,7 +40,7 @@ function convertToUTC(dateTimeStr: string, timezone: string): Date {
   const dateTime = `${formattedDate}T${formattedTime}`;
 
   // use date-fns-tz to convert the date/time to UTC
-  const zonedDate = toZonedTime(dateTime, timezone);
+  const zonedDate = fromZonedTime(dateTime, timezone);
   return zonedDate;
 }
 
