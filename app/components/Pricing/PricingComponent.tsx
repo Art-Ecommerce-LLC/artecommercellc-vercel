@@ -19,7 +19,7 @@ export default function Pricing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-tight flex items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-tight flex items-center p-6">
             Pricing
             <CurrencyDollarIcon className="w-10 h-10 text-white ml-2" />
           </h2>
@@ -27,7 +27,7 @@ export default function Pricing() {
 
         {/* Pricing Details */}
         <motion.div
-          className="mt-12 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
