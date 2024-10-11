@@ -1,38 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
+import db from '@/lib/db'; // Assuming you're using Prisma for DB access
+import { start } from 'repl';
 
-const SERVICE_TOKEN = process.env.AUTH_SERVICE_TOKEN;
-const AUTH_URL = process.env.AUTH_URL;
-
-export async function POST() {
+export async function POST(request: NextRequest) {
     try {
-        // Make POST request to the external service to grab events, sending the SERVICE_TOKEN
-        const response = await fetch(`${AUTH_URL}/api/getEvents`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+        // Parse the request body (you might want to add validation here)
+        const serviceToken = process.env.SERVICE_TOKEN;
+
+        // Fetch available events from the database
+        const events = await db.event.findMany({
+            where: {
+                isBooked: false, // Filter for unbooked events
+                serviceToken
             },
-            body: JSON.stringify({ serviceToken: SERVICE_TOKEN }),
+            orderBy: {
+                date: 'asc' // Order by date in ascending order
+            },
+            take: 200
         });
-        
-        // Check if the response was successful
-        if (!response.ok) {
-            console.error('Error fetching events from external API:', response.statusText);
-            return NextResponse.json({ error: 'Failed to fetch events' }, { status: 500 });
-        }
 
-        // Parse the response
-        const responseData = await response.json();
+        // Make theend date 30 minutes after the start date
+        console.log('events:', events);
 
-        // Check if the response contains events data
-        if (!responseData.events || responseData.events.length === 0) {
-            return NextResponse.json({ message: 'No available events found' }, { status: 200 });
-        }
-
-        // Return the available events
-        return NextResponse.json({ events: responseData.events }, { status: 200 });
-
+        // Parse through available events and format the response
+        const availableEvents = events.map((event) => {
+            return {
+                id: event.id,
+                summary: event.description,
+                start: event.date.toISOString(),
+            };
+        });
+        return NextResponse.json({ events: availableEvents });
     } catch (error) {
-        console.error('Error in getEvents API:', error);
-        return NextResponse.json({ error: 'An error occurred while fetching events' }, { status: 500 });
+        console.error('Error fetching available events:', error);
+        return NextResponse.json({ error: 'Error fetching available events' }, { status: 500 });
     }
 }

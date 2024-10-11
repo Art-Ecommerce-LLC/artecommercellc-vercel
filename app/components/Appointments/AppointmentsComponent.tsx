@@ -81,7 +81,7 @@ export function AppointmentsComponent() {
       // Prepare the request body with form values and the service token
       const requestBody = {
         dateTime: values.timeslot, // Assuming the timeslot is the formatted date/time
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Auto-detect user's timezone
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
         guestEmail: values.guestEmail,
         description: values.description,
       };

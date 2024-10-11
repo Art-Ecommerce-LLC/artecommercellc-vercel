@@ -5,7 +5,6 @@ export interface Event {
     id: string;
     summary: string;
     start: string; // UTC date string
-    end: string;   // UTC date string
   }
   // Props for SelectScrollable component
 // Props for SelectScrollable component
