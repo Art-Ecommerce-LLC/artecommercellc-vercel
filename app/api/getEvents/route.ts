@@ -18,9 +18,6 @@ export async function POST() {
             },
             take: 500
         });
-
-        console.log('Available events:', events);
-
         // Parse through available events and format the response
         const availableEvents = events.map((event : EventType) => {
             return {

@@ -1,7 +1,7 @@
 "use client";
-import NavbarComponent from "../components/Navbar"
-import {AppointmentsComponent} from "../components/Appointments/AppointmentsComponent"
-import Footer from "../components/Footer"
+import NavbarComponent from "@/components/Navbar"
+import { AppointmentsComponent } from "@/components/Appointments/AppointmentsComponent"
+import Footer from "@/components/Footer"
 
 export default function Appointments() {
 

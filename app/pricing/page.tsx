@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next'
-import PricingComponent from '../components/Pricing/PricingComponent'
+import PricingSection from '@/components/Pricing/PricingSection'
 
 export const metadata: Metadata = {
   title : "Art Ecommerce | Pricing",
@@ -11,7 +11,7 @@ export default function Pricing() {
 
   return (
     <>
-      <PricingComponent/>
+      <PricingSection/>
     </>
   );
 }

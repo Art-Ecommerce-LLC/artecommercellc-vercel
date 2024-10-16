@@ -7,10 +7,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "../ui/select";
 import {
   FormControl
-} from "@/components/ui/form";
+} from "../ui/form";
 import { SelectScrollableProps } from "@/lib/models"; // Import Event and SelectScrollableProps
 
 

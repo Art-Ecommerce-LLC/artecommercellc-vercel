@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import HomeComponent from './components/Home/HomeComponent'
+import HomePage from '@/components/Home/HomePage'
 
 export const metadata: Metadata = {
   title : "Art Ecommerce | Homepage",
@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <HomeComponent/>
+      <HomePage/>
     </>
   );
 }

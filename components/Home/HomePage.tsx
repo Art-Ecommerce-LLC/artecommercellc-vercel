@@ -1,19 +1,18 @@
 "use client";
 
-import HeroSection from "../Hero/HeroSection";
-import ServicesSection from "../Services/ServicesSection";
-import IntegrationsSection from "../Integrations/IntegrationsSection";
-import AboutSection from "../About/AboutSection";
+import HeroSection from "./HeroSection";
+import ServicesSection from "./ServicesSection";
+import IntegrationsSection from "./IntegrationsSection";
+import AboutSection from "./AboutSection";
 import Footer from "../Footer";
 import NavbarComponent from "../Navbar";
-import MetricsOverview from "../MetricsOverview";
+import MetricsOverview from "./MetricsOverview";
 
 
-export default function Home() {
+export default function HomePage() {
 
   return (
     <div className="w-full bg-[var(--dark-grey)]">
-
       <NavbarComponent isActive={"Home"} />
       <HeroSection />
       <AboutSection />

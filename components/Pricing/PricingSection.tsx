@@ -7,7 +7,7 @@ import NavbarComponent from "../Navbar";
 import Footer from "../Footer";
 
 
-export default function Pricing() {
+export default function PricingSection() {
   return (
     <div className="bg-[var(--dark-grey)]">
       <NavbarComponent isActive={"Pricing"} />

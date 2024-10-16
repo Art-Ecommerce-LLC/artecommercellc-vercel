@@ -6,12 +6,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
+} from "../ui/form";
+import { Textarea } from "../ui/textarea";
+import { Input } from "../ui/input";
+import { Calendar } from "../ui/calendar";
 import { motion, useInView } from "framer-motion";
-import { SelectScrollable } from "@/app/components/Timeslots";
+import { SelectScrollable } from "./Timeslots";
 import { Button } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
