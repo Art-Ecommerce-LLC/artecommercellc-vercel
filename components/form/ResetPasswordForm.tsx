@@ -67,7 +67,6 @@ export function ResetPasswordForm() {
           setLoading(false)
         } else {
           toast({
-            variant: "success",
             description: "Your password has been successfully changed",
             duration: 5000,
           })

@@ -73,7 +73,6 @@ export function SignUpForm() {
           setLoading(false);
         } else {
           toast({
-            variant: "success",
             description: "Account Created Successfully, Redirecting...",
             duration: 5000,
           });
