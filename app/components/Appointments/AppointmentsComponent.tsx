@@ -146,10 +146,10 @@ export function AppointmentsComponent() {
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  availableEvents={formLoading ? [] : availableEvents}  // Pass available events as strings to Calendar
+                  availableEvents={formLoading ? [] : availableEvents} 
                   className="rounded-md border border-gray-600"
                   fromDate={new Date()}
-                  toDate={new Date(new Date().setMonth(new Date().getMonth() + 1))} // Limit to next month
+                  toDate={new Date(new Date().setMonth(new Date().getMonth() +3))} 
                 />
             )}
             </div>
@@ -175,8 +175,9 @@ export function AppointmentsComponent() {
                 render={({ field }) => (
                     <FormItem>
                     <FormLabel>Timeslot</FormLabel>
+
                     <SelectScrollable
-                        field={field}
+                        field={field} // Omit ref from field props
                         selectedDate={selectedDate}
                         availableEvents={availableEvents}
                         disabled={formLoading} // Pass availableEvents to SelectScrollable

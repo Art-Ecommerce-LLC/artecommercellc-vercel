@@ -16,7 +16,7 @@ export async function POST() {
             orderBy: {
                 date: 'asc' // Order by date in ascending order
             },
-            take: 200
+            take: 500
         });
 
         // Parse through available events and format the response
