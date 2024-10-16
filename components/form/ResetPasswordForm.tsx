@@ -16,7 +16,7 @@ import {
 } from "../ui/form"
 import { Input } from "../ui/input"
 import { useRouter } from "next/navigation"
-import { useToast } from "../hooks/use-toast"
+import { useToast } from "@/hooks/use-toast"
  
 const formSchema = z.object({
     password: z.string().min(8).max(50).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/, {
