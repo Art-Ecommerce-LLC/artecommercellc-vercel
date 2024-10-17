@@ -24,6 +24,7 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
             });
         } else if (outlook) {
             transporter = nodemailer.createTransport({
+                pool: true,
                 host:'smtp.office365.com',
                 port: 587,
                 requireTLS: true,
@@ -32,7 +33,14 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                     pass: process.env.OUTLOOK_APP_PASSWORD,
                 },
             });
-            console.log(transporter);
+            transporter.verify(function(error, success) {
+                console.log(success);
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Server is ready to take our messages");
+                }
+            });
             const response = await transporter.sendMail({
                 from: process.env.OUTLOOK_SMTP_USER,
                 to,
