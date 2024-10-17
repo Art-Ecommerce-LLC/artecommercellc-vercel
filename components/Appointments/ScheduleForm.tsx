@@ -34,6 +34,7 @@ export function AppointmentsComponent() {
   const [loading, setLoading] = React.useState(false);
   const [availableEvents, setAvailableEvents] = React.useState<Event[]>([]);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
+  const [selectedTime, setSelectedTime] = React.useState<string | undefined>();
   const [formLoading, setFormLoading] = React.useState(false); // For form submission
 
   const isAppointmentRef = React.useRef(null);
@@ -59,7 +60,9 @@ export function AppointmentsComponent() {
 
         const data: { events: Event[] } = await response.json();
         setAvailableEvents(data.events); // Store the events as is 
-        setSelectedDate(new Date(data.events[0]?.start!));
+        if (data.events.length > 0) {
+          setSelectedDate(new Date(data.events[0].start));
+        }
         setLoading(false); // Set loading to false after events are fetched(strings for start/end)
       } catch (error) {
         setLoading(false); // Set loading to false after events are fetched
@@ -69,7 +72,7 @@ export function AppointmentsComponent() {
   React.useEffect(() => {
     fetchAvailableEvents();
   }, []);
-
+  console.log("selectedDate", selectedDate);
   // Form setup
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -79,8 +82,6 @@ export function AppointmentsComponent() {
       timeslot: "",
     },
   });
-
-  
 
   // Handle form submission
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -148,7 +149,7 @@ export function AppointmentsComponent() {
                 <Calendar
                   mode="single"
                   selected={selectedDate}
-                  onSelect={setSelectedDate}
+                  onSelect={value => setSelectedDate(value)}
                   availableEvents={formLoading ? [] : availableEvents} 
                   className="rounded-md border border-gray-600"
                   fromDate={new Date()}

@@ -35,10 +35,15 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
     return `${formattedTime}`;
   };
 
-  console.log(formatDateTime(filteredEvents[0]?.start!));
+  let currentSelectedDate = "Select a time slot";
+  if (selectedDate) {
+    currentSelectedDate = formatDateTime(selectedDate.toISOString());
+  }
+
+  console.log("currentSelectedDate", currentSelectedDate);
 
   return (
-    <Select onValueChange={field.onChange} defaultValue={formatDateTime(filteredEvents[0]?.start!)} disabled={disabled}>
+    <Select onValueChange={field.onChange} defaultValue={currentSelectedDate} disabled={disabled}>
       <FormControl>
       <SelectTrigger className="w-[280px]">
         <SelectValue placeholder="Select a time slot" />
@@ -49,7 +54,7 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
           <SelectLabel>Available Time Slots</SelectLabel>
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <SelectItem key={event.id} value={formatDateTime(event.start)}>
+              <SelectItem key={event.id} value={formatDateTime(event.start)} >
                 {formatDateTime(event.start)}
               </SelectItem>
             ))
