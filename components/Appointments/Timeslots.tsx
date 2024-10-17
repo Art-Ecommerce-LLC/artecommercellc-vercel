@@ -40,10 +40,9 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
     currentSelectedDate = formatDateTime(selectedDate.toISOString());
   }
 
-  console.log("currentSelectedDate", currentSelectedDate);
 
   return (
-    <Select onValueChange={field.onChange} defaultValue={currentSelectedDate} disabled={disabled}>
+    <Select onValueChange={field.onChange} value={currentSelectedDate} disabled={disabled}>
       <FormControl>
       <SelectTrigger className="w-[280px]">
         <SelectValue placeholder="Select a time slot" />

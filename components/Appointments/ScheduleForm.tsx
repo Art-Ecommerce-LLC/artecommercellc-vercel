@@ -33,8 +33,8 @@ const formSchema = z.object({
 export function AppointmentsComponent() {
   const [loading, setLoading] = React.useState(false);
   const [availableEvents, setAvailableEvents] = React.useState<Event[]>([]);
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
-  const [selectedTime, setSelectedTime] = React.useState<string | undefined>();
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
+  const [selectedTime, setSelectedTime] = React.useState<Date | undefined>();
   const [formLoading, setFormLoading] = React.useState(false); // For form submission
 
   const isAppointmentRef = React.useRef(null);
@@ -60,6 +60,7 @@ export function AppointmentsComponent() {
 
         const data: { events: Event[] } = await response.json();
         setAvailableEvents(data.events); // Store the events as is 
+
         if (data.events.length > 0) {
           setSelectedDate(new Date(data.events[0].start));
         }
@@ -72,7 +73,22 @@ export function AppointmentsComponent() {
   React.useEffect(() => {
     fetchAvailableEvents();
   }, []);
-  console.log("selectedDate", selectedDate);
+
+  React.useEffect(() => {
+    if (selectedDate) {
+      // Set the selected time to the first available time slot
+      const filteredEvents = availableEvents.filter((event) => {
+        if (!selectedDate) return false;
+        const eventDate = new Date(event.start).toDateString();
+        return eventDate === selectedDate.toDateString(); // Compare dates
+      });
+      if (filteredEvents.length > 0) {
+        setSelectedTime(new Date(filteredEvents[0].start));
+      }
+      console.log(selectedTime);
+    }
+  }, [selectedDate]);
+
   // Form setup
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -182,7 +198,7 @@ export function AppointmentsComponent() {
 
                     <SelectScrollable
                         field={field} // Omit ref from field props
-                        selectedDate={selectedDate}
+                        selectedDate={selectedTime}
                         availableEvents={availableEvents}
                         disabled={formLoading} // Pass availableEvents to SelectScrollable
                     />
