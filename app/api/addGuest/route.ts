@@ -83,7 +83,7 @@ async function addGuestBackground({
         });
 
         // Send a confirmation email to the guest
-        await sendEmail({
+        sendEmail({
             to: guestEmail,
             type: 'bookingConfirmation',
             timeslot: dateTime,
