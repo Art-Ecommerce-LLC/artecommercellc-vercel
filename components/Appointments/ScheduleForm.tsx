@@ -71,6 +71,7 @@ export function AppointmentsComponent() {
 
   React.useEffect(() => {
     fetchAvailableEvents();
+
   }, []);
 
 
@@ -126,8 +127,10 @@ export function AppointmentsComponent() {
      catch (error) {
         toast({
             variant: "destructive",
-            title: "Error scheduling appointment",
+            title: "Sorry, someone may have already booked this time slot. Please try again.",
         })
+        //reload the events
+        await fetchAvailableEvents();
         setFormLoading(false); // Set loading to false after submitting
     }
   }
