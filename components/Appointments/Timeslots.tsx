@@ -14,7 +14,6 @@ import {
 import { SelectScrollableProps } from "@/lib/models"; // Import Event and SelectScrollableProps
 
 
-
 export function SelectScrollable({ field, selectedDate, availableEvents=[], disabled }: SelectScrollableProps) {
   // Filter available events based on the selected date
   const filteredEvents = availableEvents.filter((event) => {
@@ -35,14 +34,29 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
     return `${formattedTime}`;
   };
 
-  let currentSelectedDate = "Select a time slot";
-  if (selectedDate) {
-    currentSelectedDate = formatDateTime(selectedDate.toISOString());
-  }
+  const [currentSelectedDate, setCurrentSelectedDate] = React.useState<string | undefined>(undefined);
+
+  // Set the first available timeslot as the default value when selectedDate changes
+  React.useEffect(() => {
+    if (filteredEvents.length > 0) {
+      const firstEventTime = formatDateTime(filteredEvents[0].start);
+      setCurrentSelectedDate(firstEventTime); // Set the value to the first available timeslot for the new selectedDate
+      field.onChange(firstEventTime); // Update the form field value in react-hook-form
+    } else {
+      setCurrentSelectedDate(undefined); // Reset if no events are available
+    }
+  }, [selectedDate]); // Only rerun the effect when selectedDate changes
+
+  // Handle value change when the user selects a new time slot
+  const handleValueChange = (newValue: string) => {
+    setCurrentSelectedDate(newValue); // Update the selected value
+    field.onChange(newValue); // Update the react-hook-form field value
+  };
+
 
 
   return (
-    <Select onValueChange={field.onChange} value={currentSelectedDate} disabled={disabled}>
+    <Select onValueChange={handleValueChange} disabled={disabled} value={currentSelectedDate}>
       <FormControl>
       <SelectTrigger className="w-[280px]">
         <SelectValue placeholder="Select a time slot" />

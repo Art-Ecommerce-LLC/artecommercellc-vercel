@@ -33,8 +33,7 @@ const formSchema = z.object({
 export function AppointmentsComponent() {
   const [loading, setLoading] = React.useState(false);
   const [availableEvents, setAvailableEvents] = React.useState<Event[]>([]);
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
-  const [selectedTime, setSelectedTime] = React.useState<Date | undefined>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
   const [formLoading, setFormLoading] = React.useState(false); // For form submission
 
   const isAppointmentRef = React.useRef(null);
@@ -74,20 +73,7 @@ export function AppointmentsComponent() {
     fetchAvailableEvents();
   }, []);
 
-  React.useEffect(() => {
-    if (selectedDate) {
-      // Set the selected time to the first available time slot
-      const filteredEvents = availableEvents.filter((event) => {
-        if (!selectedDate) return false;
-        const eventDate = new Date(event.start).toDateString();
-        return eventDate === selectedDate.toDateString(); // Compare dates
-      });
-      if (filteredEvents.length > 0) {
-        setSelectedTime(new Date(filteredEvents[0].start));
-      }
-      console.log(selectedTime);
-    }
-  }, [selectedDate]);
+
 
   // Form setup
   const form = useForm<z.infer<typeof formSchema>>({
@@ -104,8 +90,11 @@ export function AppointmentsComponent() {
     setFormLoading(true); // Set loading to true while submitting
     try {
       // Prepare the request body with form values and the service token
+      // Create datetime object with the selected date and timeslot
+      const formattedDate = selectedDate!.toLocaleDateString(); // Format date as "MM/DD/YYYY"
+      const dateTime = `${formattedDate} - ${values.timeslot}`;
       const requestBody = {
-        dateTime: values.timeslot, // Assuming the timeslot is the formatted date/time
+        dateTime ,// Assuming the timeslot is the formatted date/time
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
         guestEmail: values.guestEmail,
         description: values.description,
@@ -132,9 +121,9 @@ export function AppointmentsComponent() {
 
         })
       }
+    }
 
-
-    } catch (error) {
+     catch (error) {
         toast({
             variant: "destructive",
             title: "Error scheduling appointment",
@@ -198,7 +187,7 @@ export function AppointmentsComponent() {
 
                     <SelectScrollable
                         field={field} // Omit ref from field props
-                        selectedDate={selectedTime}
+                        selectedDate={selectedDate}
                         availableEvents={availableEvents}
                         disabled={formLoading} // Pass availableEvents to SelectScrollable
                     />

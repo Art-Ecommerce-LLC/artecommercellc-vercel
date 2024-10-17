@@ -46,7 +46,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.redirect(`${process.env.NODE_URL}/dashboard`);
   } catch (error) {
-    console.error('Error exchanging authorization code for tokens:', error);
     return NextResponse.json({ error: 'Failed to authenticate' }, { status: 500 });
   }
 }
