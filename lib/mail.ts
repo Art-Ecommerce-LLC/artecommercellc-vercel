@@ -24,7 +24,6 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
             });
         } else if (outlook) {
             transporter = nodemailer.createTransport({
-                pool: true,
                 host:'smtp.office365.com',
                 port: 587,
                 requireTLS: true,
@@ -34,7 +33,6 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                 },
             });
             transporter.verify(function(error, success) {
-                console.log(success);
                 if (error) {
                     console.log(error);
                 } else {
