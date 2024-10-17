@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 
 // Core function to send an email
 export async function sendMail({ to, subject, text, html, outlook }: { to: string, subject: string, text: string, html: string, outlook?: boolean }) {
+    const isProduction = process.env.NODE_ENV === 'production';
     try {
         let transporter;
         if (!outlook) {
@@ -25,6 +26,7 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
             transporter = nodemailer.createTransport({
                 host:'smtp.office365.com',
                 port: 587,
+                secure: isProduction ,
                 auth: {
                     user: process.env.OUTLOOK_SMTP_USER,
                     pass: process.env.OUTLOOK_APP_PASSWORD,
