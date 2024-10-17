@@ -38,8 +38,10 @@ export function AppointmentsComponent() {
 
   const isAppointmentRef = React.useRef(null);
   const isAppointmentInView = useInView(isAppointmentRef, { once: true });
+
+  // setSelected date to the first available date
+  
   const { toast } = useToast()  
-  // Fetch available events on mount
 
   const fetchAvailableEvents = async () => {
     setLoading(true); // Set loading to true while fetching
@@ -57,6 +59,7 @@ export function AppointmentsComponent() {
 
         const data: { events: Event[] } = await response.json();
         setAvailableEvents(data.events); // Store the events as is 
+        setSelectedDate(new Date(data.events[0]?.start!));
         setLoading(false); // Set loading to false after events are fetched(strings for start/end)
       } catch (error) {
         setLoading(false); // Set loading to false after events are fetched

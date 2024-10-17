@@ -22,22 +22,23 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
     const eventDate = new Date(event.start).toDateString();
     return eventDate === selectedDate.toDateString(); // Compare dates
   });
-
+  
   // Function to format date and time
   const formatDateTime = (dateTime: string) => {
     const date = new Date(dateTime);
-    const formattedDate = date.toLocaleDateString(); // Format date as "MM/DD/YYYY"
     const formattedTime = date.toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
       timeZoneName: 'short',
     });
-    return `${formattedDate} - ${formattedTime}`;
+    return `${formattedTime}`;
   };
 
+  console.log(formatDateTime(filteredEvents[0]?.start!));
+
   return (
-    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={disabled}>
+    <Select onValueChange={field.onChange} defaultValue={formatDateTime(filteredEvents[0]?.start!)} disabled={disabled}>
       <FormControl>
       <SelectTrigger className="w-[280px]">
         <SelectValue placeholder="Select a time slot" />
