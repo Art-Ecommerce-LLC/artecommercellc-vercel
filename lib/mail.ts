@@ -48,6 +48,7 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                 text,
                 html,
             });
+            transporter.close();
             console.log(response);
         }
         
