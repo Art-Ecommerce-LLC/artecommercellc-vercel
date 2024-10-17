@@ -5,6 +5,7 @@ import db from '@/lib/db';
 import { oauth2Client } from '@/lib/oauth_client';
 import { google } from 'googleapis';
 import { decrypt } from '@/lib/encrypt';
+import { sendEmail } from '@/lib/mail';
 
 const schema = z.object({
   dateTime: z.string(),
@@ -123,6 +124,13 @@ export async function POST(request: NextRequest) {
         sendUpdates: 'all'
     });
 
+    // Send a confirmation email to the guest
+    await sendEmail({
+        to: guestEmail,
+        type: 'bookingConfirmation',
+        timeslot: dateTime,
+        outlook: true,
+    });
 
     // Return a success response to the client
     return NextResponse.json({ message: 'Your event has been booked!' });

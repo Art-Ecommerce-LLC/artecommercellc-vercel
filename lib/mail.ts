@@ -3,25 +3,45 @@
 import nodemailer from 'nodemailer';
 
 // Core function to send an email
-export async function sendMail({ to, subject, text, html }: { to: string, subject: string, text: string, html: string }) {
+export async function sendMail({ to, subject, text, html, outlook }: { to: string, subject: string, text: string, html: string, outlook?: boolean }) {
     try {
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD,
-            },
-        });
+        let transporter;
+        if (!outlook) {
+            transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user: process.env.SMTP_USER,
+                    pass: process.env.SMTP_PASSWORD,
+                },
+            });
+            await transporter.sendMail({
+                from: process.env.SMTP_USER,
+                to,
+                subject,
+                text,
+                html,
+            });
+        } else if (outlook) {
+            transporter = nodemailer.createTransport({
+                host:'smtp.office365.com',
+                port: 587,
+                auth: {
+                    user: process.env.OUTLOOK_SMTP_USER,
+                    pass: process.env.OUTLOOK_APP_PASSWORD,
+                },
+            });
+            await transporter.sendMail({
+                from: process.env.OUTLOOK_SMTP_USER,
+                to,
+                subject,
+                text,
+                html,
+            });
+        }
+        
 
-        await transporter.sendMail({
-            from: process.env.SMTP_USER,
-            to,
-            subject,
-            text,
-            html,
-        });
+
     } catch (error) {
-        console.log(error);
         return { error: "Something went wrong" };
     }
 }
@@ -32,11 +52,17 @@ export async function sendEmail({
     type,
     session = '',
     otp = '',
+    outlook,
+    timeslot,
+
 }: {
     to: string;
-    type: 'verifyEmail' | 'otp' | 'resetPassword';
+    type: 'verifyEmail' | 'otp' | 'resetPassword' | 'bookingConfirmation';
     session?: string;
     otp?: string;
+    outlook?: boolean;
+    timeslot?: string;
+
 }) {
     let subject = '';
     let text = '';
@@ -62,10 +88,21 @@ export async function sendEmail({
             text = `Click this link to reset your password: ${resetPasswordUrl}`;
             html = `<p>Click <a href="${resetPasswordUrl}">here</a> to reset your password.</p>`;
             break;
+        case 'bookingConfirmation':
+            subject = 'Booking Confirmation';
+            text = 'Your booking has been confirmed';
+            html = `
+            <p>Your booking has been confirmed for ${timeslot}. A seperate email with the meeting link has been sent to you. I look forward to speaking with you!</p>
+            <p>Best, <br> Ben Myers <br> CEO at Art Ecommerce, LLC</p>
+            `;
+            break;
 
         default:
             throw new Error('Invalid email type');
     }
 
+    if (outlook == true) {
+        return sendMail({ to, subject, text, html, outlook });
+    }
     return sendMail({ to, subject, text, html });
 }
