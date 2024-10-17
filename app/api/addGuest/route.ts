@@ -66,7 +66,7 @@ async function addGuestBackground({
         };
             
         const attendees = existingEvent.data.attendees || [];
-        attendees.push({ email: guestEmail.toLowerCase() });
+        attendees.push({ email: guestEmail });
 
         // Update the event with the new attendee
         await calendar.events.patch({
