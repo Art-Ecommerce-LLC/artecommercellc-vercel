@@ -26,19 +26,20 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
             transporter = nodemailer.createTransport({
                 host:'smtp.office365.com',
                 port: 587,
-                secure: isProduction ,
+                requireTLS: true,
                 auth: {
                     user: process.env.OUTLOOK_SMTP_USER,
                     pass: process.env.OUTLOOK_APP_PASSWORD,
                 },
             });
-            await transporter.sendMail({
+            const response = await transporter.sendMail({
                 from: process.env.OUTLOOK_SMTP_USER,
                 to,
                 subject,
                 text,
                 html,
             });
+            console.log(response);
         }
         
 
