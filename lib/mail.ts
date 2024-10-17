@@ -32,6 +32,7 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                     pass: process.env.OUTLOOK_APP_PASSWORD,
                 },
             });
+            console.log(transporter);
             const response = await transporter.sendMail({
                 from: process.env.OUTLOOK_SMTP_USER,
                 to,
