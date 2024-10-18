@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { convertToUTC } from '@/lib/dates';
 import db from '@/lib/db';
-import { oauth2Client } from '@/lib/oauth_client';
-import { google } from 'googleapis';
-import { decrypt } from '@/lib/encrypt';
-import { sendEmail } from '@/lib/mail';
+import { addGuestBackground } from '@/lib/background';
 
 const schema = z.object({
   dateTime: z.string(),
@@ -13,87 +10,6 @@ const schema = z.object({
   guestEmail: z.string().email(),
   description: z.string().min(5),
 });
-
-async function addGuestBackground({
-    googleToken,
-    googleEventId,
-    guestEmail,
-    description,
-    dateTime,
-}: {
-    googleToken: string ;
-    googleEventId: string | null;
-    guestEmail: string;
-    description: string;
-    dateTime: string;
-}) : Promise<void> {
-
-    try {
-        // Decrypt the user's google tokens
-        const decryptedGoogleTokens = await decrypt(googleToken);
-
-        oauth2Client.setCredentials({
-            access_token: decryptedGoogleTokens.accessToken,
-            refresh_token: decryptedGoogleTokens.refreshToken,
-        });
-
-        const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-
-        if (!googleEventId) {
-            throw new Error('Event ID not found');
-        }
-
-        // Add the guest email to the event
-        const existingEvent = await calendar.events.get({
-            calendarId: process.env.GOOGLE_CALENDAR_ID,
-            eventId: googleEventId,
-        });
-
-        // Get the start and end times from the existing event
-        const { start, end } = existingEvent.data;
-
-        if (!start || !end) {
-            throw new Error('Failed to get event start and end times');
-        }
-
-        // Extract and add timezone to start and end times
-        const updatedStart = {
-            dateTime: start.dateTime, // Use the existing event's start time
-        };
-
-        const updatedEnd = {
-            dateTime: end.dateTime, // Use the existing event's end time
-        };
-            
-        const attendees = existingEvent.data.attendees || [];
-        attendees.push({ email: guestEmail });
-
-        // Update the event with the new attendee
-        await calendar.events.patch({
-            calendarId: process.env.GOOGLE_CALENDAR_ID,
-            eventId : googleEventId,
-            requestBody: {
-                attendees,
-                status: 'confirmed', // Optionally mark as confirmed
-                start: updatedStart, // Include start with timezone
-                end: updatedEnd, // Include end with timezone
-                description: description
-            },
-            sendUpdates: 'all'
-        });
-
-        // Send a confirmation email to the guest
-        await sendEmail({
-            to: guestEmail,
-            type: 'bookingConfirmation',
-            timeslot: dateTime,
-            outlook: true,
-        });
-    } catch (error) {
-        throw new Error('Failed to add guest to event');
-    }
-
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -152,16 +68,32 @@ export async function POST(request: NextRequest) {
     }
     
     
-    addGuestBackground({
-        googleToken: user.googleToken,
-        googleEventId: event.googleEventId,
-        guestEmail: guestEmail.toLowerCase(),
-        description,
-        dateTime,
-    }).catch(err => {
-        console.error('Failed to add guest or send confirmation email:', err);
-    });
+    // addGuestBackground({
+    //     googleToken: user.googleToken,
+    //     googleEventId: event.googleEventId,
+    //     guestEmail: guestEmail.toLowerCase(),
+    //     description,
+    //     dateTime,
+    // }).catch(err => {
+    //     console.error('Failed to add guest or send confirmation email:', err);
+    // });
 
+    fetch (`${process.env.CRON_URL}/api/schedule-email`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            googleToken: user.googleToken,
+            googleEventId: event.googleEventId,
+            guestEmail: guestEmail.toLowerCase(),
+            description,
+            dateTime,
+            serviceToken
+        }),
+    }).then(() => {
+      console.log('Background task triggered');
+    })
     return NextResponse.json({ message: 'Your event has been booked!' });
 
   } catch (error) {
