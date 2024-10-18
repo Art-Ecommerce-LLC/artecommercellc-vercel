@@ -158,6 +158,8 @@ export async function POST(request: NextRequest) {
         guestEmail: guestEmail.toLowerCase(),
         description,
         dateTime,
+    }).catch(err => {
+        console.error('Failed to add guest or send confirmation email:', err);
     });
 
     return NextResponse.json({ message: 'Your event has been booked!' });

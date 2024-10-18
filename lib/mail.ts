@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 
 // Core function to send an email
 export async function sendMail({ to, subject, text, html, outlook }: { to: string, subject: string, text: string, html: string, outlook?: boolean }) {
-    const isProduction = process.env.NODE_ENV === 'production';
+
     try {
         let transporter;
         if (!outlook) {
@@ -36,30 +36,20 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                     user: process.env.OUTLOOK_SMTP_USER,
                     pass: process.env.OUTLOOK_APP_PASSWORD,
                 },
-                debug: true,
-            logger:true,
             });
-            transporter.verify(function(error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Server is ready to take our messages");
-                }
-            });
-            const response = await transporter.sendMail({
+            await transporter.sendMail({
                 from: process.env.OUTLOOK_SMTP_USER,
                 to,
                 subject,
                 text,
                 html,
             });
-            console.log(response);
         }
         
 
 
     } catch (error) {
-        return { error: "Something went wrong" };
+        console.log(error);
     }
 }
 
@@ -84,50 +74,55 @@ export async function sendEmail({
     let subject = '';
     let text = '';
     let html = '';
-
-    switch (type) {
-        case 'verifyEmail':
-            const verificationUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyEmail?verifyEmail=${session}`;
-            subject = 'Email Verification';
-            text = `Please verify your email by clicking this link: ${verificationUrl}`;
-            html = `<p>Click <a href="${verificationUrl}">here</a> to verify your email.</p>`;
-            break;
-
-        case 'otp':
-            subject = 'OTP Verification';
-            text = `Please verify your OTP`;
-            html = `<p>Your OTP is: ${otp}</p>`;
-            break;
-
-        case 'resetPassword':
-            const resetPasswordUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyPasswordReset?verifyPassword=${session}`;
-            subject = 'Reset Password';
-            text = `Click this link to reset your password: ${resetPasswordUrl}`;
-            html = `<p>Click <a href="${resetPasswordUrl}">here</a> to reset your password.</p>`;
-            break;
-        case 'bookingConfirmation':
-            subject = 'Booking Confirmation';
-            text = 'Your booking has been confirmed';
-            html = `
-            <p>Your booking has been confirmed for ${timeslot}. A seperate email with the meeting link has been sent to you. I look forward to speaking with you!</p>
-            <p>Best, <br> Ben Myers <br> CEO at Art Ecommerce, LLC</p>
-            `;
-            break;
-
-        default:
-            throw new Error('Invalid email type');
-    }
-
-    if (outlook == true) {
-        await sendMail({ to, subject, text, html, outlook });
-        const oldTo = to;
-        to = 'ben@artecommercellc.com';
-        subject = 'You have a new appointment';
-        text = `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
-        html= `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
-        await sendMail({ to, subject, text, html, outlook });
+    try {
+        switch (type) {
+            case 'verifyEmail':
+                const verificationUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyEmail?verifyEmail=${session}`;
+                subject = 'Email Verification';
+                text = `Please verify your email by clicking this link: ${verificationUrl}`;
+                html = `<p>Click <a href="${verificationUrl}">here</a> to verify your email.</p>`;
+                break;
+    
+            case 'otp':
+                subject = 'OTP Verification';
+                text = `Please verify your OTP`;
+                html = `<p>Your OTP is: ${otp}</p>`;
+                break;
+    
+            case 'resetPassword':
+                const resetPasswordUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyPasswordReset?verifyPassword=${session}`;
+                subject = 'Reset Password';
+                text = `Click this link to reset your password: ${resetPasswordUrl}`;
+                html = `<p>Click <a href="${resetPasswordUrl}">here</a> to reset your password.</p>`;
+                break;
+            case 'bookingConfirmation':
+                subject = 'Booking Confirmation';
+                text = 'Your booking has been confirmed';
+                html = `
+                <p>Your booking has been confirmed for ${timeslot}. A seperate email with the meeting link has been sent to you. I look forward to speaking with you!</p>
+                <p>Best, <br> Ben Myers <br> CEO at Art Ecommerce, LLC</p>
+                `;
+                break;
+    
+            default:
+                throw new Error('Invalid email type');
+        }
+    
+        if (outlook == true) {
+            await sendMail({ to, subject, text, html, outlook });
+            const oldTo = to;
+            to = 'ben@artecommercellc.com';
+            subject = 'You have a new appointment';
+            text = `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
+            html= `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
+            await sendMail({ to, subject, text, html, outlook });
+            return;
+        }
+        await sendMail({ to, subject, text, html });
         return;
     }
-    await sendMail({ to, subject, text, html });
-    return;
+    catch (error) {
+        console.log(error);
+        return { error: "Something went wrong" };
+    }
 }
