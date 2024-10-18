@@ -27,7 +27,6 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                 host:'smtp.office365.com',
                 port: 587,
                 requireTLS: true,
-                secure: isProduction,
                 auth: {
                     user: process.env.OUTLOOK_SMTP_USER,
                     pass: process.env.OUTLOOK_APP_PASSWORD,
