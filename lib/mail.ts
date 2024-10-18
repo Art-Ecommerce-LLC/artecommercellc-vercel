@@ -27,10 +27,17 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                 host:'smtp.office365.com',
                 port: 587,
                 requireTLS: true,
+                secure: false,
+                tls: {
+                    ciphers: "SSLv3",
+                    rejectUnauthorized: false,
+                },
                 auth: {
                     user: process.env.OUTLOOK_SMTP_USER,
                     pass: process.env.OUTLOOK_APP_PASSWORD,
                 },
+                debug: true,
+            logger:true,
             });
             transporter.verify(function(error, success) {
                 if (error) {
@@ -112,7 +119,15 @@ export async function sendEmail({
     }
 
     if (outlook == true) {
-        return sendMail({ to, subject, text, html, outlook });
+        await sendMail({ to, subject, text, html, outlook });
+        const oldTo = to;
+        to = 'ben@artecommercellc.com';
+        subject = 'You have a new appointment';
+        text = `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
+        html= `<p>You have a new appointment at ${timeslot} with ${oldTo}</p>`;
+        await sendMail({ to, subject, text, html, outlook });
+        return;
     }
-    return sendMail({ to, subject, text, html });
+    await sendMail({ to, subject, text, html });
+    return;
 }
