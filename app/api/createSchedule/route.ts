@@ -14,6 +14,7 @@ const schema = z.object({
   startDatetime: z.string().min(1, 'Start date is required'),
   endDatetime: z.string().min(1, 'End date is required'),
   appointmentLength: z.string().min(1, 'Appointment length is required'),
+  blockDays: z.array(z.string()).optional(),
 })
 
 export async function POST(request: NextRequest) {
@@ -25,6 +26,7 @@ export async function POST(request: NextRequest) {
     startDatetime,
     endDatetime,
     appointmentLength,
+    blockDays
   } = schema.parse(body);
   
 
@@ -73,9 +75,24 @@ export async function POST(request: NextRequest) {
   let endIndex = new Date(startDatetime);
   endIndex.setHours(endTime.getHours());
   endIndex.setMinutes(endTime.getMinutes());
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
   const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
   while (startIndex < endTime) {
+
+    let currentDay = new Intl.DateTimeFormat("en-US", {
+      weekday: "long"
+    }).format(startIndex).toLowerCase();
+
+    if (blockDays && blockDays.includes(currentDay)) {
+      startIndex = addDays(startIndex, 1);
+      startIndex.setHours(startTime.getHours());
+      startIndex.setMinutes(startTime.getMinutes());
+      endIndex = new Date(startIndex);
+      endIndex.setHours(endTime.getHours());
+      endIndex.setMinutes(endTime.getMinutes());
+      continue;
+    }
 
     const end = addMinutes(startIndex, Number(appointmentLength));
 

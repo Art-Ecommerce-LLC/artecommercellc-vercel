@@ -51,6 +51,7 @@ const formSchema = z.object({
     meridiem: z.string().min(1, 'End Abbreviation is required'),
   }),
   appointmentLength: z.string().min(1, 'Appointment Length is required'),
+  blockDays: z.string().min(1, 'Block Days is required').optional(),
   dateRange: z.object({
     from: z.date(), // Make 'from' optional for better validation handling
     to: z.date().optional(),   // Make 'to' optional for better validation handling
@@ -164,6 +165,7 @@ export default function AppointmentsComponent() {
       startTime: startTime,
       endTime: endTime,
       dateRange: date,
+      blockDays: 'Friday,Saturday',
       appointmentLength: "30",
     },
   })
@@ -185,15 +187,28 @@ export default function AppointmentsComponent() {
     startDatetime.setHours(startTime.getHours(), startTime.getMinutes(), 0, 0);
     endDatetime.setHours(endTime.getHours(), endTime.getMinutes(), 0, 0);
 
-    
+    // Turn block days into comma separated array
+    let payload : {
+      title: string;
+      description: string;
+      startDatetime: Date;
+      endDatetime: Date;
+      appointmentLength: string;
+      blockDays?: string[];
+      } = {
+        title: values.title,
+        description: values.description,
+        startDatetime ,
+        endDatetime ,
+        appointmentLength: values.appointmentLength
+      }
 
-    const payload = {
-      title: values.title,
-      description: values.description,
-      startDatetime ,
-      endDatetime ,
-      appointmentLength: values.appointmentLength,
+    if (values.blockDays) {
+      const blockDays = values.blockDays.split(",").map((day) => day.trim().toLowerCase());
+      // add blockDays to payload
+      payload["blockDays"]  = blockDays;
     }
+    
 
     console.log(payload);
 
@@ -444,6 +459,17 @@ export default function AppointmentsComponent() {
                     setDate={setDate}
                   />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            /> 
+            <FormField
+              control={form.control}
+              name="blockDays"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Block Days</FormLabel>
+                    <Input placeholder="Friday,Saturday,..." {...field} />
                   <FormMessage />
                 </FormItem>
               )}

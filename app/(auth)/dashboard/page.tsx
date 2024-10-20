@@ -13,15 +13,15 @@ export default async function Dashboard() {
   }
 
   if ('role' in session.user && session.user.role === 'ADMIN') {
-    return <>
+    return <div className='bg-background'>
               <NavbarDashServer />
               <AdminDashboard />
-          </>
+          </div>
   } else if ('role' in session.user && session.user.role === 'USER') {
-    return <>
+    return <div className='bg-background' >
             <NavbarDashServer />
             <UserDashboard />
-           </>
+           </div>
   } else {
     redirect('/sign-in');
   }
