@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
   const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
   while (startIndex < endTime) {
 
-    let currentDay = new Intl.DateTimeFormat("en-US", {
+    const currentDay = new Intl.DateTimeFormat("en-US", {
       weekday: "long"
     }).format(startIndex).toLowerCase();
 

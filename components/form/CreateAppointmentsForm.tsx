@@ -188,7 +188,7 @@ export default function AppointmentsComponent() {
     endDatetime.setHours(endTime.getHours(), endTime.getMinutes(), 0, 0);
 
     // Turn block days into comma separated array
-    let payload : {
+    const payload : {
       title: string;
       description: string;
       startDatetime: Date;
