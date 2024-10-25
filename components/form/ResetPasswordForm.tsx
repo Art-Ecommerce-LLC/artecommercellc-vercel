@@ -164,7 +164,6 @@ export function ResetPasswordForm() {
             />      
              <Button 
              type="submit" 
-             variant="outline" 
              className="text-black w-full"
              disabled={loading}>
               {loading ? "Submitting..." : "Submit"}

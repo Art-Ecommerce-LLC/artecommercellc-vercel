@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
         const { session: sessionData } = jwtSchema.parse({ session });
 
         if (!sessionData) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         const sessionCookie = await decrypt(sessionData);
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
 
         
         if (!sessionDBData) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
 
@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
 
         if (!isTokenValid) {
             console.log('Token is invalid')
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         const user = await db.user.findUnique({
@@ -48,12 +48,12 @@ export async function GET(request: NextRequest) {
 
         // Check if the user exists
         if (!user) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         // Check if the email was already verified
         if (user.emailVerified) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         // Verify the email
@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
 
         deleteSession({ userId: user.id, cookieNames: ['verifyEmail'], request: request })
 
-        return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/verified-email`)
+        return NextResponse.redirect(`${process.env.NODE_URL}/verified-email`)
     } catch (error) {
         return NextResponse.json({ error: "Something went wrong" }, { status: 500 })
     }

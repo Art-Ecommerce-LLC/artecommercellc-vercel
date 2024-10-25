@@ -40,3 +40,5 @@ venv/
 .env
 
 FBNExport.csv
+
+.env.development

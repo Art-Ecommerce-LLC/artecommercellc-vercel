@@ -118,3 +118,39 @@ model Event {
   
 }
 
+// schema.prisma
+model Lead {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  company    String?
+  website    String?
+  createdAt  DateTime @default(now())
+  Outreach   Outreach[]
+
+  @@map("leads")
+}
+
+model Email {
+  id        Int      @id @default(autoincrement())
+  subject   String
+  body      Json
+  sent      Boolean  @default(false)
+  opened    Boolean  @default(false)
+  replied   Boolean  @default(false)
+  sentAt    DateTime?
+  
+  Outreach  Outreach[]
+  @@map("emails")
+}
+model Outreach {
+  id         Int      @id @default(autoincrement())
+  leadId     Int
+  emailId    Int
+  sentAt     DateTime @default(now())
+
+
+  leads       Lead     @relation(fields: [leadId], references: [id])
+  emails      Email    @relation(fields: [emailId], references: [id])
+  @@map("outreach")
+}

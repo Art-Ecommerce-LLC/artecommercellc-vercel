@@ -12,7 +12,7 @@ import { NextRequest } from 'next/server';
 const getExpirationTime = (sessionType: string): Date => {
   switch (sessionType) {
     case 'session':
-      return new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days for normal session
+      return new Date(Date.now() + 7 * 24 * 60 * 60 * 1000 * 5 ); // 30 days for normal session
     case 'verifyEmail':
     case 'resetPassword':
       return new Date(Date.now() + 24 * 60 * 60 * 1000); // 1 day for email verification and reset password

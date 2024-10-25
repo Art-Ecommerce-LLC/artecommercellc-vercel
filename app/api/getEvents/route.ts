@@ -20,11 +20,10 @@ export async function POST() {
 
         const availableEvents = events.map((event : EventType) => {
             return {
-                id: event.id,
-                summary: event.description,
                 start: event.date.toISOString(),
             };
         });
+        console.log('Available events:', availableEvents);
         return NextResponse.json({ events: availableEvents });
     } catch (error) {
         console.error('Error fetching available events:', error);

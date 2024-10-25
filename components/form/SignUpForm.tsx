@@ -171,7 +171,6 @@ export function SignUpForm() {
             <div>
               <Button 
               type="submit" 
-              variant="outline" 
               className="text-black w-full font-size-sm mt-2"
               disabled={loading}>
               {loading ? "Submitting..." : "Submit"}

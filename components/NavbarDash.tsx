@@ -48,8 +48,13 @@ export default function NavbarDash({ mfaVerified }: { mfaVerified: boolean }) {
           <ArtEcommerceLogo />
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/dashboard">
            Appointments
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/leads">
+           Leads
           </Link>
         </NavbarItem>
       </NavbarContent>

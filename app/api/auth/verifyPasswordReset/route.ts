@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
         const { session: sessionJWE } = jwtSchema.parse({ session });
 
         if (!sessionJWE) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         const sessionCookie = await decrypt(sessionJWE);
@@ -31,13 +31,13 @@ export async function GET(request: NextRequest) {
         })
 
         if (!sessionData) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         const isValidToken = await compare(sessionCookie.token, sessionData.token);
 
         if (!isValidToken) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
         // Check if the user exists
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 
         // Check if the user exists
         if (!user) {
-            return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/404`)
+            return NextResponse.redirect(`${process.env.NODE_URL}/404`)
         }
 
 
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
             sessionType: 'resetPassword'
         })
         
-        return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/reset-password`)
+        return NextResponse.redirect(`${process.env.NODE_URL}/reset-password`)
 
     } catch (error) {
         return NextResponse.json({ error: "Something went wrong" }, { status: 500 })

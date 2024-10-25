@@ -54,19 +54,18 @@ export default function VerifyEmailPage() {
           <Spinner size="lg" color="success"/>
         </div>
       )}
-    <main className="flex flex-col min-h-screen w-full items-center justify-center bg-primary text-primary-foreground">
+    <main className="flex flex-col min-h-screen w-full items-center justify-center">
         <div className="w-full max-w-96 min-w-80 p-2">
             <h1> Verify Email</h1>
             <p> You must verify your email to acess your account</p>
             <Button 
             onClick={resendEmail} 
             type="submit" 
-            variant="outline" 
             className="text-black w-full font-size-sm mt-2 mb-3"
             disabled={loading}>
               {loading ? "Resending..." : "Resend"}
             </Button>
-            <Link href="/sign-in" className={buttonVariants({ variant: "outline" })}>Sign In</Link>
+            <Link href="/sign-in" className="text-center">Sign In</Link>
         </div>        
     </main>
     </div>

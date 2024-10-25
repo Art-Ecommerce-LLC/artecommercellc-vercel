@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 
 // Core function to send an email
 export async function sendMail({ to, subject, text, html, outlook }: { to: string, subject: string, text: string, html: string, outlook?: boolean }) {
-    const isProduction = process.env.NODE_ENV === 'production'; 
+
     try {
         let transporter;
         if (!outlook) {
@@ -33,7 +33,7 @@ export async function sendMail({ to, subject, text, html, outlook }: { to: strin
                 },
             });
             await transporter.sendMail({
-                from: process.env.OUTLOOK_SMTP_USER,
+                from: process.env.SMTP_USER,
                 to,
                 subject,
                 text,
@@ -72,7 +72,7 @@ export async function sendEmail({
     try {
         switch (type) {
             case 'verifyEmail':
-                const verificationUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyEmail?verifyEmail=${session}`;
+                const verificationUrl = `${process.env.NODE_URL}/api/auth/verifyEmail?verifyEmail=${session}`;
                 subject = 'Email Verification';
                 text = `Please verify your email by clicking this link: ${verificationUrl}`;
                 html = `<p>Click <a href="${verificationUrl}">here</a> to verify your email.</p>`;
@@ -85,7 +85,7 @@ export async function sendEmail({
                 break;
     
             case 'resetPassword':
-                const resetPasswordUrl = `${process.env.NEXTAUTH_URL}/api/auth/verifyPasswordReset?verifyPassword=${session}`;
+                const resetPasswordUrl = `${process.env.NODE_URL}/api/auth/verifyPasswordReset?verifyPassword=${session}`;
                 subject = 'Reset Password';
                 text = `Click this link to reset your password: ${resetPasswordUrl}`;
                 html = `<p>Click <a href="${resetPasswordUrl}">here</a> to reset your password.</p>`;

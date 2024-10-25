@@ -4,280 +4,116 @@ import { cookies } from 'next/headers'
 import { decrypt } from './encrypt'
 import { cache } from 'react'
 import db from './db'
+import { auth } from 'googleapis/build/src/apis/abusiveexperiencereport'
 // import renderApi from '@api/render-api';
 
+interface Auth {
+    isAuth: boolean;
+    sessionId?: string;
+    userId?: string;
+    emailVerified?: boolean;
+    mfaVerified?: boolean;
+    role?: string;
+}
 
-
-export const verifySession = cache(async () => {
-    const cookie = cookies().get('session')?.value
-
+export const verifySession = cache(async (sessionString : string): Promise<Auth> => {
+    const cookie = cookies().get(sessionString)?.value
+    let authData : Auth = { isAuth: false }
     if (!cookie) {
-        return { isAuth: false}
+        return authData
     }
     const session = await decrypt(cookie)
-   
     if (!session.userId) {
-        return { isAuth: false}
+        return authData
     }
-   
-    return { isAuth: true, userId: session.userId }
+
+    if (sessionString === 'session') {
+        authData.sessionId = session.sessionId
+    }
+    authData.isAuth = true
+    authData.userId = session.userId
+    return authData
 })
 
-export const getUser = cache(async () => {
-    const session = await verifySession()
+export const getUser = cache(async (sessionString : string) : Promise<Auth>  => {
+    const session = await verifySession(sessionString)
+
     if (!session.isAuth) {
-        return { isAuth: false}
+        return session
     }
-    try {
-        const user = await db.user.findUnique({
-            where: { 
-                id: session.userId
-            }
-        })
-
-        if (!user) {
-            return { isAuth: false}
-        }
-        
-        // eslint-disable-next-line no-unused-vars
-        const { password, email, updatedAt, createdAt, ...rest } = user;
-        return rest; // Return the modified user object
-
-    } catch (error) {
-        return { isAuth: false}
-    }
-})
-
-export const getOTPSession = cache(async () => {
-    const cookie = cookies().get('otp')?.value
-    if (!cookie) {
-        return { isAuth: false}
-    }
-    try {
-        const session = await decrypt(cookie)
     if (!session.userId) {
-        return { isAuth: false}
+        return session
     }
-
-    // Check if the user has an active OTP session
-    const otpSession = await db.oTP.findUnique({
+    // Get the user data
+    const user = await db.user.findUnique({
         where: {
-            userId: session.userId
+            id: session.userId
         }
     })
-    if (!otpSession) {
-        return { isAuth: false}
+    if (!user) {
+        return session
     }
-
-    return { isAuth: true }
-    } catch (error) {
-        return { isAuth: false}
-    }   
+    session.role = user.role
+    return session
 })
 
-
-export const getVerifyEmailSession = cache(async () => {
-    const cookie = cookies().get('verify-email')?.value
-    if (!cookie) {
-        return { isAuth: false}
-    }
-    const session = await decrypt(cookie)
-
-    if (!session.userId) {
-        return { isAuth: false}
-    }
-
+export const getSession = cache(async (sessionString: string) : Promise<Auth> => {
+    const authData= await getUser(sessionString)
     try {
-        const emailVerification = await db.emailVerification.findUnique({
-            where: {
-                userId: session.userId
-            }
-        })
-        if (!emailVerification) {
+
+    
+        if (!authData.isAuth) {
             return { isAuth: false}
         }
-        return { isAuth: true }
-    } catch (error) {
-        return { isAuth: false}
-    }
-});
-
-export const getResetPasswordSession = cache(async () => {
-    const cookie = cookies().get('resetPassword')?.value
-    if (!cookie) {
-        return { isAuth: false}
-    }
-    const session = await decrypt(cookie)
-    if (!session.userId) {
-        return { isAuth: false}
-    }
-    try {
-        // Check if the user has an active reset password session
-        const resetPassword = await db.resetPassword.findUnique({
-            where: {
-                userId: session.userId
-            }
-        })
-        if (!resetPassword) {
-            return { isAuth: false}
-        }
-
-        return { isAuth: true }
-    } catch (error) {
-        return { isAuth: false}
-    }
-});
-
-export const getSession = cache(async () => {
-    const cookie = cookies().get('session')?.value
-    if (!cookie) {
-        return { isAuth: false}
-    }
-    const session = await decrypt(cookie)
-    if (!session.userId) {
-        return { isAuth: false}
-    }
-    // Find the sessionid in the database
-    try {
-        const sessionDb = await db.session.findUnique({
-            where: {
-                id: session.sessionId
-            }
-        })
-        if (!sessionDb) {
-            return { isAuth: false}
-        }
-        return { isAuth: true, session: sessionDb }
-    } catch (error) {
-        return { isAuth: false}
-    }
-});
-
-export const getSessionData = cache(async (pageType: string) => {
-    try {
-        let session;
-        const user = await getUser()
-        switch (pageType) {
-            case 'resetPassword':
-                session = await getResetPasswordSession()
-                return { isAuth: session.isAuth, user };
-            case 'verifyEmail':
-                session = await getVerifyEmailSession()
-                return { isAuth: session.isAuth, user };
-            case 'otp':
-                session = await getOTPSession()
-                return { isAuth: session.isAuth, user };
-            case 'session':
-                session = await getSession()
-                if (!session) {
-                    return { isAuth: false }
+    
+        if (sessionString === 'session') {
+            const session = await db.session.findUnique({
+                where: {
+                    id: authData.sessionId
                 }
-                if (!session.session) {
-                    return { isAuth: false }
+            })
+            if (!session) {
+                return authData
+            }
+            authData.mfaVerified = session.mfaVerified
+            authData.role = authData.role
+            return authData
+        }
+        if (sessionString === 'otp') {
+            const session = await db.oTP.findUnique({
+                where: {
+                    userId: authData.userId
                 }
-                return { isAuth: session.isAuth, user, mfaVerified: session.session.mfaVerified };
-            default:
-                return { isAuth: false }; 
-        }}catch (error) {
-        return { isAuth: false }
+            })
+            if (!session) {
+                return authData
+            }
+            return authData
+        }
+        if (sessionString === 'resetPassword') {
+            const session = await db.resetPassword.findUnique({
+                where: {
+                    userId: authData.userId
+                }
+            })
+            if (!session) {
+                return authData
+            }
+            return authData
+        }
+        if (sessionString === 'verifyEmail') {
+            const session = await db.emailVerification.findUnique({
+                where: {
+                    userId: authData.userId
+                }
+            })
+            if (!session) {
+                return authData
+            }
+            return authData
+        }
+        return authData
+    } catch (error) {
+        return authData
     }
-});
-
-// export const getRenderProjects = cache(async () => {
-//     try {
-//         const renderProjects = []
-//         const renderApiKey = process.env.RENDER_API_KEY
-//         if (!renderApiKey) {
-//             return []
-//         }
-
-//         // initialize the render client
-//         renderApi.auth(renderApiKey);
-
-//         const user = await getUser()
-//         if (!user) {
-//             return []
-//         }
-
-//         if ("id" in user) {
-//             const projects = await db.renderDeploys.findMany({
-//                 where: {
-//                     userId: user.id
-//                 }
-//             })
-
-//             if (!projects) {
-//                 return []
-//             }
-            
-//             try {
-//                 const renderServices = await renderApi.listServices({limit: 20})
-//                 const { data } = renderServices
-
-//                 for (const {service} of data) {
-//                     if (!service) {
-//                         return []
-//                     }
-//                     const renderDeploys = await renderApi.listDeploys({serviceId: service!.id})
-//                     const { data } = renderDeploys
-
-//                     if (service.suspended === "not_suspended") {
-
-//                         renderProjects.push({ 
-//                             name: service.name,
-//                             commit: data[0]?.deploy?.commit?.message ?? "",  // Ensure commit is never undefined
-//                             status: data[0]?.deploy?.status ?? "canceled",  // Default status if undefined
-//                             updatedAt: data[0]?.deploy?.updatedAt || "",
-//                           });
-
-                        
-
-//                     }   
-
-//                 }  
-
-//             } catch (error) {
-//                 console.log(error)
-//                 console.error("Error fetching render services")
-//             }
-
-//             return renderProjects
-//         } else {
-//             return []
-//         }
-//     }   catch (error) {
-//         return []
-//     }
-// });
-
-// export const getVercelProjects = cache(async () => {
-//     try {
-//         const vercelApiKey = process.env.VERCEL_API_KEY;
-//         const result = await fetch("https://api.vercel.com/v9/projects", {
-//             headers: {
-//                 Authorization: `Bearer ${vercelApiKey}`
-//             },
-//             method: "get"
-//         });
-//         const data = await result.json();
-//         // Ensure that we return an empty array if no projects are found or an error occurs
-//         console.log(data.projects)
-//         // for (const project of data.projects) {  
-//         //     console.log(project.crons.deploymentId)   
-//         //     const deployResult = await fetch(`https://api.vercel.com/v13/deployments/${project.crons.deploymentId}`, {
-//         //         "headers": {
-//         //             "Authorization": "Bearer " + vercelApiKey
-//         //         },
-//         //         "method": "get"
-//         //     });
-//         //     const deployData = await deployResult.json();
-//         //     console.log(deployData)
-
-
-//         // }
-//         // return data.projects || [];
-//     } catch (error) {
-//         console.error("Error fetching Vercel projects:", error);
-//         return []; // Return an empty array if there's an error
-//     }
-// });
+} )

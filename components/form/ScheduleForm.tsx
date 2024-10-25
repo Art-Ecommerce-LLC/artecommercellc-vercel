@@ -11,7 +11,7 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Calendar } from "../ui/calendar";
 import { motion, useInView } from "framer-motion";
-import { SelectScrollable } from "./Timeslots";
+import { SelectScrollable } from "../Appointments/Timeslots";
 import { Button } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

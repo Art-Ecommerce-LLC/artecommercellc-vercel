@@ -1,10 +1,10 @@
 import { SignInForm } from "@/components/form/SignInForm"
-import { getSessionData } from "@/lib/dal"
+import { getSession } from "@/lib/dal"
 import { redirect } from "next/navigation"
 
 
 export default async function SignInPage() {
-    const session = await getSessionData('session')
+    const session = await getSession('session')
     if (session.mfaVerified) {
         redirect('/dashboard')
     }

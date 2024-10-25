@@ -1,6 +1,6 @@
 "use client";
 import NavbarComponent from "@/components/Navbar"
-import { AppointmentsComponent } from "@/components/Appointments/ScheduleForm"
+import { AppointmentsComponent } from "@/components/form/ScheduleForm"
 import Footer from "@/components/Footer"
 
 export default function Appointments() {

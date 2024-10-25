@@ -491,6 +491,7 @@ export default function AppointmentsComponent() {
         )}
 
       </form>
+      <GenerateKey />
     </Form>
     ) : (
       <div className="space-y-2">

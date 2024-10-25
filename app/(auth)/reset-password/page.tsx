@@ -1,10 +1,10 @@
 import { ResetPasswordForm } from "@/components/form/ResetPasswordForm"
-import { getSessionData } from "@/lib/dal"
+import { getSession } from "@/lib/dal"
 import { redirect } from "next/navigation"
 
 export default async function ResetPasswordPage() {
 
-  const sessionData = await getSessionData('resetPassword');
+  const sessionData = await getSession('resetPassword');
 
   if (!sessionData.isAuth) {
     redirect('/');
@@ -15,7 +15,7 @@ export default async function ResetPasswordPage() {
 
 
   return (
-    <main className="flex flex-col min-h-screen w-full items-center justify-center bg-primary text-primary-foreground">
+    <main className="flex flex-col min-h-screen w-full items-center justify-center">
         <div className="w-full max-w-96 min-w-80 p-2">
             <ResetPasswordForm/>
         </div>        

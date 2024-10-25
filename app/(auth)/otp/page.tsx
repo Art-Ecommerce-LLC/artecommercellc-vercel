@@ -1,12 +1,12 @@
 
 import { OTPForm } from "@/components/form/OTPForm"
-import { getSessionData } from "@/lib/dal"
+import { getSession } from "@/lib/dal"
 import { redirect } from "next/navigation"
 
 export default async function OTPPage() {
     // Must validate the session, and otp session
 
-  const session = await getSessionData('otp')
+  const session = await getSession('otp')
   if (!session.isAuth) {
       redirect('/')
   }

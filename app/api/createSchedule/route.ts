@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     // Create the event in Google Calendar
 
     const eventRequest = {
-        calendarId: process.env.GOOGLE_CALENDAR_ID,
+        calendarId: process.env.GOOGLE_CALENDAR_ID!,
         resource: {
           summary: title,
           description,
@@ -121,8 +121,10 @@ export async function POST(request: NextRequest) {
         },
         conferenceDataVersion: 1, // Enable conference data for Google Meet
       };
+      console.log(eventRequest);
       const newGoogleEvent = await calendar.events.insert(eventRequest);
 
+      console.log(process.env.SERVICE_TOKEN!);
       await db.event.create({
         data: {
           title,

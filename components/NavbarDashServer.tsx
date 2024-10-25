@@ -1,9 +1,9 @@
 import NavbarDash from '../components//NavbarDash';
-import { getSessionData } from '@/lib/dal';
+import { getSession } from '@/lib/dal';
 
 export default async function NavbarDashServer() {
-  const sessionData = await getSessionData('session');
-  const mfaVerified = sessionData?.mfaVerified || false;
+  const session = await getSession('session');
+  const mfaVerified = session.mfaVerified || false;
 
   return <NavbarDash mfaVerified={mfaVerified} />;
 }
