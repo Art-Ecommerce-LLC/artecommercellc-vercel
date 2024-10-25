@@ -18,7 +18,7 @@ interface Auth {
 
 export const verifySession = cache(async (sessionString : string): Promise<Auth> => {
     const cookie = cookies().get(sessionString)?.value
-    let authData : Auth = { isAuth: false }
+    const authData : Auth = { isAuth: false }
     if (!cookie) {
         return authData
     }
