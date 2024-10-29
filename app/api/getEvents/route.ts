@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import db from '@/lib/db'; // Assuming you're using Prisma for DB access
-import { EventType } from '@/lib/models';
 
 export async function POST() {
     try {
@@ -16,14 +15,20 @@ export async function POST() {
             orderBy: {
                 date: 'asc' // Order by date in ascending order
             },
+            select: {
+                date: true,
+            }
         });
 
-        const availableEvents = events.map((event : EventType) => {
-            return {
-                start: event.date.toISOString(),
-            };
-        });
-        console.log('Available events:', availableEvents);
+        const availableEvents = events.map((event) => {
+            if (event.date > new Date()) {
+                return {
+                    start: event.date.toISOString(),
+                };
+            }
+            return null; // or you can skip the event by returning null
+        }).filter(Boolean); // filter out null values
+
         return NextResponse.json({ events: availableEvents });
     } catch (error) {
         console.error('Error fetching available events:', error);
