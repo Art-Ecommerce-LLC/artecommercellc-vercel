@@ -48,23 +48,23 @@ export default function PricingSection() {
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>One Page</span>
+                <span>Single Page</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Custom design</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Custom Integrations</span>
+                <span>Custom Design</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Responsive layout</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <XCircleIcon className="h-5 w-5 text-gray-500" />
                 <span>24/7 priority support</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <XCircleIcon className="h-5 w-5 text-gray-500" />
+                <span>Custom Integrations</span>
               </li>
             </ul>
             <div className="mt-6 text-white">
@@ -107,23 +107,23 @@ export default function PricingSection() {
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Up to 10 Pages</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <CogIcon className="h-5 w-5 text-gray-500" />
-                <span>Custom design</span>
+                <span>Five Pages</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Custom Integrations</span>
+                <span>Custom Design</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Responsive layout</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <XCircleIcon className="h-5 w-5 text-gray-500" />
                 <span>24/7 priority support</span>
+              </li>
+              <li className="flex items-center space-x-2">
+              <XCircleIcon className="h-5 w-5 text-gray-500" />
+                <span>Custom Integrations</span>
               </li>
             </ul>
             <div className="mt-6 text-white">
@@ -169,20 +169,20 @@ export default function PricingSection() {
                 <span>Up to 10 Pages</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CogIcon className="h-5 w-5 text-gray-500" />
-                <span>Custom design</span>
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>Custom Design</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Custom Integrations</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Responsive layout</span>
+                <span>Responsive Layout</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>24/7 priority support</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>Custom Integrations</span>
               </li>
             </ul>
             <div className="mt-6 text-white">
