@@ -58,10 +58,11 @@ export function AppointmentsComponent() {
         }
 
         const data: { events: Event[] } = await response.json();
+
         setAvailableEvents(data.events); // Store the events as is 
 
         if (data.events.length > 0) {
-          setSelectedDate(new Date(data.events[0].start));
+          setSelectedDate(new Date(data.events[0].date));
         }
         setLoading(false); // Set loading to false after events are fetched(strings for start/end)
       } catch (error) {
@@ -71,7 +72,6 @@ export function AppointmentsComponent() {
 
   React.useEffect(() => {
     fetchAvailableEvents();
-
   }, []);
 
 

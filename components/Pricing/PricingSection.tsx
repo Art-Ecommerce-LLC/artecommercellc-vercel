@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CurrencyDollarIcon, EnvelopeIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon, CalendarIcon } from "@heroicons/react/24/solid";
+import { CurrencyDollarIcon, XCircleIcon, CheckCircleIcon, DevicePhoneMobileIcon, ComputerDesktopIcon, CogIcon, CalendarIcon } from "@heroicons/react/24/solid";
 import { Button } from "@nextui-org/react";
 import NavbarComponent from "../Navbar";
 import Footer from "../Footer";
@@ -34,9 +34,9 @@ export default function PricingSection() {
         >
           {/* Basic Plan */}
           <motion.div
-            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-blue-500 rounded-lg p-6 shadow-lg hover:shadow-blue-500/50 transition-shadow hover:scale-105 transform "
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-blue-500 rounded-lg p-6 shadow-lg hover:shadow-blue-500/50 transition-shadow "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="flex items-center space-x-2 mb-4">
@@ -48,32 +48,34 @@ export default function PricingSection() {
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>1 page</span>
+                <span>One Page</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CogIcon className="h-5 w-5 text-gray-500" />
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Custom design</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>Custom Integrations</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Responsive layout</span>
               </li>
-              
               <li className="flex items-center space-x-2">
-                <EnvelopeIcon className="h-5 w-5 text-blue-500" />
-                <span>Email support</span>
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>24/7 priority support</span>
               </li>
-              
             </ul>
             <div className="mt-6 text-white">
               <h4 className="text-lg font-semibold">Additional Costs:</h4>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Maintenance & Hosting: $100/month</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Website updates after delivery: $300</span>
                 </li>
               </ul>
@@ -91,9 +93,9 @@ export default function PricingSection() {
 
           {/* Standard Plan */}
           <motion.div
-            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-yellow-500 rounded-lg p-6 shadow-lg hover:shadow-yellow-500/50 transition-shadow hover:scale-105 transform "
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-yellow-500 rounded-lg p-6 shadow-lg hover:shadow-yellow-500/50 transition-shadow "
+            initial={{opacity: 0 }}
+            animate={{opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="flex items-center space-x-2 mb-4">
@@ -105,7 +107,7 @@ export default function PricingSection() {
             <ul className="mt-6 space-y-2 text-white w-full flex-grow">
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <span>Up to 5 pages</span>
+                <span>Up to 10 Pages</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CogIcon className="h-5 w-5 text-gray-500" />
@@ -113,22 +115,26 @@ export default function PricingSection() {
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>Custom Integrations</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>Responsive layout</span>
               </li>
               <li className="flex items-center space-x-2">
-                <EnvelopeIcon className="h-5 w-5 text-blue-500" />
-                <span>Priority email support</span>
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                <span>24/7 priority support</span>
               </li>
             </ul>
             <div className="mt-6 text-white">
               <h4 className="text-lg font-semibold">Additional Costs:</h4>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Maintenance & Hosting: $100/month</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Website updates after delivery: $300</span>
                 </li>
               </ul>
@@ -146,9 +152,9 @@ export default function PricingSection() {
 
           {/* Premium Plan */}
           <motion.div
-            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-green-500 rounded-lg p-6 shadow-lg hover:shadow-green-500/50 transition-shadow hover:scale-105 transform "
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            className="flex flex-col items-start bg-[rgba(255,255,255,0.05)] border-l-4 border-green-500 rounded-lg p-6 shadow-lg hover:shadow-green-500/50 transition-shadow"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="flex items-center space-x-2 mb-4">
@@ -175,7 +181,7 @@ export default function PricingSection() {
                 <span>Responsive layout</span>
               </li>
               <li className="flex items-center space-x-2">
-                <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+                <CheckCircleIcon className="h-5 w-5 text-green-500" />
                 <span>24/7 priority support</span>
               </li>
             </ul>
@@ -183,11 +189,11 @@ export default function PricingSection() {
               <h4 className="text-lg font-semibold">Additional Costs:</h4>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Maintenance & Hosting: $500/month</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <CogIcon className="h-5 w-5 text-gray-500" />
                   <span>Website updates after delivery: $300</span>
                 </li>
               </ul>

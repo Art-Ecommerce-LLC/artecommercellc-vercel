@@ -18,7 +18,7 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
   // Filter available events based on the selected date
   const filteredEvents = availableEvents.filter((event) => {
     if (!selectedDate) return false;
-    const eventDate = new Date(event.start).toDateString();
+    const eventDate = new Date(event.date).toDateString();
     return eventDate === selectedDate.toDateString(); // Compare dates
   });
   
@@ -39,7 +39,7 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
   // Set the first available timeslot as the default value when selectedDate changes
   React.useEffect(() => {
     if (filteredEvents.length > 0) {
-      const firstEventTime = formatDateTime(filteredEvents[0].start);
+      const firstEventTime = formatDateTime(filteredEvents[0].date);
       setCurrentSelectedDate(firstEventTime); // Set the value to the first available timeslot for the new selectedDate
       field.onChange(firstEventTime); // Update the form field value in react-hook-form
     } else {
@@ -67,8 +67,8 @@ export function SelectScrollable({ field, selectedDate, availableEvents=[], disa
           <SelectLabel>Available Time Slots</SelectLabel>
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <SelectItem key={event.id} value={formatDateTime(event.start)} >
-                {formatDateTime(event.start)}
+              <SelectItem key={event.id} value={formatDateTime(event.date)} >
+                {formatDateTime(event.date)}
               </SelectItem>
             ))
           ) : (

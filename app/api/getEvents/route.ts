@@ -10,26 +10,18 @@ export async function POST() {
         const events = await db.event.findMany({
             where: {
                 isBooked: false, // Filter for unbooked events
-                serviceToken
-            },
-            orderBy: {
-                date: 'asc' // Order by date in ascending order
+                serviceToken,
+                date: {
+                    gt: new Date(), // Filter for future events
+                },
             },
             select: {
                 date: true,
+                id: true,
             }
         });
 
-        const availableEvents = events.map((event) => {
-            if (event.date > new Date()) {
-                return {
-                    start: event.date.toISOString(),
-                };
-            }
-            return null; // or you can skip the event by returning null
-        }).filter(Boolean); // filter out null values
-
-        return NextResponse.json({ events: availableEvents });
+        return NextResponse.json({ events }, { status: 200 });
     } catch (error) {
         console.error('Error fetching available events:', error);
         return NextResponse.json({ error: 'Error fetching available events' }, { status: 500 });

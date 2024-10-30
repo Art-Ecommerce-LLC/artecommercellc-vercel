@@ -20,7 +20,7 @@ function Calendar({
 }: CalendarProps) {
   // Convert string-based `availableEvents` to `Date` for comparison
 
-  const availableDates = availableEvents.map((event) => new Date(event.start));
+  const availableDates = availableEvents.map((event) => new Date(event.date));
   const isEmpty = availableDates.length === 0;
   // Disable all days that are not in availableDates
   const isDateDisabled = (date: Date) => {

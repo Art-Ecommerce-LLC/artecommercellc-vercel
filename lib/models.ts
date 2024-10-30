@@ -3,8 +3,7 @@ import type { ControllerRenderProps} from "react-hook-form";
 // Define the Event type based on the API response structure
 export interface Event {
     id: string;
-    summary: string;
-    start: string; // UTC date string
+    date: string;
 }
 
 export interface AppointmentFormValues {
