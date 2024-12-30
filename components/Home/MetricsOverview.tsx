@@ -60,18 +60,6 @@ export  default function MetricsOverview() {
           <CircleProgress score={88} label="Performace" color="#03A9F4" startAnimation={startAnimation} />
 
         </div>
-
-        <div className="text-center mt-12">
-          <Button
-            color="secondary"
-            className="height-[6rem]"
-            as="a"
-            href="/appointments"
-          >
-            <CalendarIcon className="h-5 w-5" />
-            Get a Free Perfomance Audit
-          </Button>
-        </div>
       </div>
     </motion.div>
   );

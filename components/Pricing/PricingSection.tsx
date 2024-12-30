@@ -80,15 +80,7 @@ export default function PricingSection() {
                 </li>
               </ul>
             </div>
-              <Button
-                className="py-4 px-6 mt-4 rounded-lg text-white bg-blue-500 hover:bg-blue-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
-                color="primary"
-                as="a"
-                href="/appointments"
-              >
-                <CalendarIcon className="h-5 w-5" />
-                Get Started
-              </Button>
+              
           </motion.div>
 
           {/* Standard Plan */}
@@ -139,15 +131,6 @@ export default function PricingSection() {
                 </li>
               </ul>
             </div>
-              <Button
-                className="py-4 px-6 mt-4 rounded-lg text-white bg-yellow-500 hover:bg-yellow-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
-                color="primary"
-                as="a"
-                href="/appointments"
-              >
-                <CalendarIcon className="h-5 w-5" />
-                Get Started
-              </Button>
           </motion.div>
 
           {/* Premium Plan */}
@@ -198,15 +181,7 @@ export default function PricingSection() {
                 </li>
               </ul>
             </div>
-              <Button
-                className="py-4 px-6 mt-4 rounded-lg text-white bg-green-500 hover:bg-green-600 transition-transform transform hover:scale-105 flex items-center space-x-2"
-                color="primary"
-                as="a"
-                href="/appointments"
-              >
-                <CalendarIcon className="h-5 w-5" />
-                Get Started
-              </Button>
+
           </motion.div>
         </motion.div>
       </div>

@@ -59,18 +59,6 @@ export default function HeroSection() {
                         <span><strong>Proven Satisfaction:</strong> Happy clients and measurable results.</span>
                         </li>
                     </ul>
-                    <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                    <Button
-                        className="py-5 px-6 rounded-lg flex items-center space-x-2"
-                        color="primary"
-                        as="a"
-                        href="/appointments"
-                    >
-                        <CalendarIcon className="h-5 w-5" />
-                        Get Started
-                    </Button>
-                        <p className="text-white">Or call me at <strong>(858) 519-2727</strong></p>
-                    </div>
                     </motion.div>
 
                      {/* Rotating Gear Image */}
