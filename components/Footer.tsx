@@ -20,12 +20,6 @@ const Footer: React.FC = () => {
                                     Pricing
                                 </Link>
                             </li>
-                            <li className="text-white mx-2 hidden custom-520:inline">|</li>
-                            <li className="flex items-center">
-                                <Link href="/appointments" className="text-gray-300 hover:text-white transition duration-300">
-                                    Appointments
-                                </Link>
-                            </li>
                         </ul>
                     </div>
                 </nav>

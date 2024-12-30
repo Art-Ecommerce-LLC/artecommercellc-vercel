@@ -20,8 +20,7 @@ export default function NavbarComponent({ isActive }: NavbarComponentProps) {
 
   const menuItems = [
     { name: "Home", href: "/" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Appointments", href: "/appointments" },
+    { name: "Pricing", href: "/pricing" }
   ];
 
   return (
